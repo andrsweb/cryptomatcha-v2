@@ -1,0 +1,131 @@
+@import '../../../../scss/common/mixins.scss';
+
+.wallet-button-wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.wallet-button-inner {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	
+	.address {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		transition: opacity ease $tr;
+		cursor: pointer;
+
+		&:hover {
+			opacity: $op;
+		}
+
+		@media(min-width: $xl) {
+			svg {
+				display: none;
+			}
+		}
+
+		@media(min-width: $xxl) {
+			svg {
+				display: block;
+			}
+		}
+	}
+
+	.address, .balance {
+		font-size: 14px
+	}
+
+	@media(min-width: $xl) {
+		gap: 8px;
+	}
+
+	@media(min-width: $xxl) {
+		gap: 16px;
+	}
+}
+
+.wallet-button {
+	@include button();
+	background-color: $orange;
+	border-color: $orange;
+	color: $white;
+	gap: 10px;
+	position: relative;
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+}
+
+.disconnect-button {
+	background-color: $red;
+	border-radius: $br10;
+	color: $white;
+	border-color: $red;
+
+	@include button();
+
+	&:hover {
+		background-color: #d6070a;
+		border-color: #d6070a;
+
+	}
+
+	&:active {
+		background-color: #8f0608;
+		border-color: #8f0608;
+	}
+}
+
+.user-button {
+	position: absolute;
+	left: 132px;
+	top: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	gap: 8px;
+	color: $black;
+	transition: opacity ease $tr;
+	padding: 8px 16px;
+	border: 1px solid $black;
+	background-color: $white;
+	border-radius: $br10;
+
+	svg {
+		display: none;
+	}
+
+	&::after {
+		content: 'Account';
+		font-family: $ff-title;
+		font-weight: $fw-bold;
+		font-size: 16px;
+		text-transform: uppercase;
+	}
+
+	@media(min-width: $xl) {
+		position: static;
+		left: auto;
+		top: auto;
+		padding: 0;
+		background-color: transparent;
+		border: 0;
+
+		&::after {
+			display: none;
+		}
+
+		svg {
+			display: flex;
+		}
+	}
+
+	&:hover {
+		opacity: $op;
+	}
+}

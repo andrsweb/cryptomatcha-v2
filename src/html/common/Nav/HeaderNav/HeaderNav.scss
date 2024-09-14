@@ -1,0 +1,37 @@
+.header-menu {
+	display: flex;
+	position: relative;
+	
+
+	&-list {
+		display: flex;
+		align-items: center;
+		gap: 30px;
+
+		@media(min-width: $xl) {
+			gap: 50px;
+		}
+
+		.list-item {
+			display: flex;
+			align-items: center;
+			
+			a {
+				font-family: $ff;
+				font-weight: $fw-bold;
+				font-size: 14px;
+				color: $black;
+				text-transform: uppercase;
+				transition: opacity ease $tr;
+
+				@media(min-width: $xxl) {
+					font-size: 16px;
+				}
+
+				&:hover {
+					opacity: $op;
+				}
+			}
+		}
+	}
+}

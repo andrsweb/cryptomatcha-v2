@@ -15,8 +15,8 @@ $container-xl: 1540px;
 $container-padding: 20px;
 
 // Font families.
-$ff			: Arial, sans-serif;
-$ff-title	: Arial, sans-serif;
+$ff			: 'Serifa Std 55 Roman', sans-serif;
+$ff-title	: 'Axiforma', sans-serif;
 
 // Font sizes.
 $fs-xs	: 12px;
@@ -32,13 +32,17 @@ $fw-medium	: 500;
 $fw-bold	: 700;
 
 // Line heights.
-$lh			: 1.5;
-$lh-title	: 1.3;
+$lh			: 1.2;
 
 // Colors.
 $white		: #FFFFFF;
 $black		: #111111;
+$green		: #4A965B;
+$l-green    : #E4F8CD;
+$orange		: #F9854B;
+$red		: #ac1113;
 
 // Others.
 $tr: 0.35s;
 $op: 0.7;
+$br10: 10px;

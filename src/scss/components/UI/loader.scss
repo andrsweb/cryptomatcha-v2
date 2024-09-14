@@ -1,0 +1,15 @@
+.loader {
+	width: 100px;
+	height: 16.8px;
+
+	@media(min-width: $xl) {
+		width: 100%;
+	}
+
+	$bg: $l-green 50%, $black 0;
+
+	background: linear-gradient(90deg, $bg);
+	background-size: 20px 100%;
+	background-repeat: repeat-x;
+	animation: l10 1s infinite linear;
+}

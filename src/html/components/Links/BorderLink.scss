@@ -1,0 +1,29 @@
+.link-border {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 8px 16px;
+	border: 1px solid $black;
+	border-radius: $br10;
+	background-color: $white;
+	text-transform: uppercase;
+	font-family: $ff-title;
+	font-weight: $fw-bold;
+	color: $black;
+	transition: background-color ease $tr,
+				color ease $tr;
+
+	@media(min-width: $xl) {
+		font-size: 14px;
+	}
+
+	@media(min-width: $xxl) {
+		font-size: 16px;
+	}
+
+	&:hover {
+		background-color: $orange;
+		color: $white;
+		border-color: $orange;
+	}
+}
