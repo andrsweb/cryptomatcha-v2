@@ -45,9 +45,18 @@ $orange		: #F9854B;
 $red		: #93032E;
 
 // Box-shadow
-$bs-low: rgba(17, 17, 26, 0.1) 0px 1px 0px;
-$bs-main:  -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
-$bs-active:	-2px -2px 6px rgba(255,255,255,0.45), 2px 2px 6px rgba(94,104,121,0.3);
+$bs-hover: -2px -2px 6px rgba(255, 255, 255, .6),
+-2px -2px 4px rgba(255, 255, 255, .4),
+2px 2px 2px rgba(255, 255, 255, .05),
+2px 2px 4px rgba(0, 0, 0, .1);;
+$bs-main:   -6px -6px 14px rgba(255, 255, 255, .7),
+-6px -6px 10px rgba(255, 255, 255, .5),
+6px 6px 8px rgba(255, 255, 255, .075),
+6px 6px 10px rgba(0, 0, 0, .15);
+$bs-active:	inset -2px -2px 6px rgba(255, 255, 255, .7),
+inset -2px -2px 4px rgba(255, 255, 255, .5),
+inset 2px 2px 2px rgba(255, 255, 255, .075),
+inset 2px 2px 4px rgba(0, 0, 0, .15);
 
 // Others.
 $tr: 0.25s;

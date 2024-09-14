@@ -7,15 +7,15 @@
 	border-radius: $br10;
 	text-transform: uppercase;
 	box-shadow: $bs-main;
-	transition: box-shadow ease $tr, transform ease $tr,
+	transition: box-shadow ease $tr,
 		background-color ease $tr, color ease $tr;
 
 	&:hover {
-		box-shadow: $bs-active;
+		box-shadow: $bs-hover;
 	}
 
 	&:active {
-		transform: translateY(2px);
+		box-shadow: $bs-active;
 	}
 
 	@media(min-width: $xl) {

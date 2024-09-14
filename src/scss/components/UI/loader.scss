@@ -1,16 +1,15 @@
+$bg: $green 50%, $white-ghost 0;
+
 .loader {
 	width: 100px;
 	height: 16.8px;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-
-	@media(min-width: $xl) {
-		width: 100%;
-	}
-
-	$bg: $green 50%, $white-ghost 0;
-
 	background: linear-gradient(90deg, $bg);
 	background-size: 20px 100%;
 	background-repeat: repeat-x;
 	animation: l10 1s infinite linear;
+
+	@media(min-width: $xl) {
+		width: 100%;
+	}
 }
