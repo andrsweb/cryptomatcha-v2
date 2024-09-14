@@ -15,6 +15,8 @@ import BorderLink from "../../components/Links/BorderLink"
 import { sessionOptions } from "./functions"
 import { walletConnectOptions } from "./functions"
 import { FaBars, FaTimes } from "react-icons/fa"
+import { Link } from 'react-router-dom'
+import logo from '../../../assets/svg/logos/header-logo.svg'
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -97,10 +99,15 @@ const Header = () => {
                         </div>
                     </div>
                     <div className={`mobile-menu ${menuOpen ? 'opened' : ''}`}>
+						
                         <BorderLink href="/apps" text="Apps" />
+						<Link className='menu-logo' to="/">
+							<img src={logo} alt="" />
+						</Link>
                         <NavLeft />
                         <NavRight />
                         {chains.length > 0 && <WalletButton chainName={chains[0].chain_name} />}
+						
                     </div>
                 </header>
             </ChainProvider>

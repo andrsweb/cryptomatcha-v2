@@ -3,15 +3,14 @@
 	justify-content: center;
 	align-items: center;
 	padding: 8px 16px;
-	border: 1px solid $black;
 	border-radius: $br10;
 	background-color: $white;
 	text-transform: uppercase;
 	font-family: $ff-title;
 	font-weight: $fw-bold;
 	color: $black;
-	transition: background-color ease $tr,
-				color ease $tr;
+	box-shadow:  $bs-main;
+	transition: box-shadow ease $tr;
 
 	@media(min-width: $xl) {
 		font-size: 14px;
@@ -22,8 +21,6 @@
 	}
 
 	&:hover {
-		background-color: $orange;
-		color: $white;
-		border-color: $orange;
+		box-shadow: $bs-active;
 	}
 }

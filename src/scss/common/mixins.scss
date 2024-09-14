@@ -4,9 +4,19 @@
 	line-height: $lh;
 	padding: 8px 16px;
 	font-size: 16px;
-	border: 1px solid transparent;
 	border-radius: $br10;
 	text-transform: uppercase;
+	box-shadow: $bs-main;
+	transition: box-shadow ease $tr, transform ease $tr,
+		background-color ease $tr, color ease $tr;
+
+	&:hover {
+		box-shadow: $bs-active;
+	}
+
+	&:active {
+		transform: translateY(2px);
+	}
 
 	@media(min-width: $xl) {
 		font-size: 14px;

@@ -49,9 +49,8 @@
 
 .wallet-button {
 	@include button();
-	background-color: $orange;
-	border-color: $orange;
-	color: $white;
+	background-color: $white;
+	color: $black-rich;
 	gap: 10px;
 	position: relative;
 
@@ -83,18 +82,18 @@
 .user-button {
 	position: absolute;
 	left: 132px;
-	top: 32px;
+	top: 64px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 30px;
 	gap: 8px;
 	color: $black;
-	transition: opacity ease $tr;
 	padding: 8px 16px;
-	border: 1px solid $black;
 	background-color: $white;
 	border-radius: $br10;
+	box-shadow: $bs-main;
+	transition: box-shadow ease $tr;
 
 	svg {
 		display: none;
@@ -126,6 +125,6 @@
 	}
 
 	&:hover {
-		opacity: $op;
+		box-shadow: $bs-active;
 	}
 }
