@@ -1,0 +1,84 @@
+* {
+	outline: none;
+	box-sizing: border-box
+}
+
+body, html {
+	height: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	margin: 0
+}
+
+body {
+	position: relative;
+	min-width: 300px;
+	display: flex;
+	height: auto;
+	font-family: $ff;
+	font-size: $fs-md;
+	line-height: $lh;
+	color: $black;
+	background-color: $white;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+	&.no-scroll {
+		overflow: hidden;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ol {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+form, fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	outline: 0;
+	background: none;
+	cursor: pointer;
+	transition: background-color ease $tr,
+				color ease $tr;
+}
+
+#root {
+	width: 100%;
+}
+
+.wrapper {
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	.footer {
+		margin-top: auto
+	}
+}
