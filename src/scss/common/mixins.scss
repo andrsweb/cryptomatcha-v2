@@ -1,5 +1,5 @@
 @mixin button() {
-	font-family: $ff-title;
+	font-family: $ff-h1;
 	font-weight: $fw-bold;
 	line-height: $lh;
 	padding: 8px 16px;
@@ -18,11 +18,36 @@
 		box-shadow: $bs-active;
 	}
 
-	@media(min-width: $xl) {
-		font-size: 14px;
+	@media(min-width: $md) {
+		font-size: 18px;
 	}
 
 	@media(min-width: $xxl) {
-		font-size: 16px;
+		font-size: 20px;
+	}
+}
+
+@mixin sectionPadding {
+	padding: 60px 0;
+
+	@media(min-width: $xl) {
+		padding: 120px 0;
+	}
+}
+
+// Texts
+@mixin text-main() {
+	font-family: $ff;
+	font-weight: $fw-regular;
+	font-size: 18px;
+	line-height: $lh-text;
+	color: $black-rich;
+
+	@media(min-width: $md) {
+		font-size: 20px;
+	}
+
+	@media(min-width: $xl) {
+		font-size: 24px;
 	}
 }

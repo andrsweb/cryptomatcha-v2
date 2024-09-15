@@ -1,60 +1,95 @@
 @font-face {
-    font-family: 'Serifa Std 55 Roman';
-    src: url('../../fonts/SerifaStd-Roman.eot');
-    src: url('../../fonts/SerifaStd-Roman.eot?#iefix') format('embedded-opentype'),
-        url('../../fonts/SerifaStd-Roman.woff2') format('woff2'),
-        url('../../fonts/SerifaStd-Roman.woff') format('woff'),
-        url('../../fonts/SerifaStd-Roman.ttf') format('truetype');
+    font-family: 'Rajdhani';
+    src: url('../../fonts/Rajdhani-Bold.eot');
+    src: url('../../fonts/Rajdhani-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/Rajdhani-Bold.woff2') format('woff2'),
+        url('../../fonts/Rajdhani-Bold.woff') format('woff'),
+        url('../../fonts/Rajdhani-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('../../fonts/Rajdhani-Regular.eot');
+    src: url('../../fonts/Rajdhani-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/Rajdhani-Regular.woff2') format('woff2'),
+        url('../../fonts/Rajdhani-Regular.woff') format('woff'),
+        url('../../fonts/Rajdhani-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Serifa Std 45';
-    src: url('../../fonts/SerifaStd-Bold.eot');
-    src: url('../../fonts/SerifaStd-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../../fonts/SerifaStd-Bold.woff2') format('woff2'),
-        url('../../fonts/SerifaStd-Bold.woff') format('woff'),
-        url('../../fonts/SerifaStd-Bold.ttf') format('truetype');
-    font-weight: bold;
+    font-family: 'Rajdhani';
+    src: url('../../fonts/Rajdhani-Medium.eot');
+    src: url('../../fonts/Rajdhani-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/Rajdhani-Medium.woff2') format('woff2'),
+        url('../../fonts/Rajdhani-Medium.woff') format('woff'),
+        url('../../fonts/Rajdhani-Medium.ttf') format('truetype');
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Serifa Std 45';
-    src: url('../../fonts/SerifaStd-Light.eot');
-    src: url('../../fonts/SerifaStd-Light.eot?#iefix') format('embedded-opentype'),
-        url('../../fonts/SerifaStd-Light.woff2') format('woff2'),
-        url('../../fonts/SerifaStd-Light.woff') format('woff'),
-        url('../../fonts/SerifaStd-Light.ttf') format('truetype');
+    font-family: 'Rajdhani';
+    src: url('../../fonts/Rajdhani-Light.eot');
+    src: url('../../fonts/Rajdhani-Light.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/Rajdhani-Light.woff2') format('woff2'),
+        url('../../fonts/Rajdhani-Light.woff') format('woff'),
+        url('../../fonts/Rajdhani-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Axiforma';
-    src: url('../../fonts/Axiforma-ExtraBold.eot');
-    src: url('../../fonts/Axiforma-ExtraBold.eot?#iefix') format('embedded-opentype'),
-        url('../../fonts/Axiforma-ExtraBold.woff2') format('woff2'),
-        url('../../fonts/Axiforma-ExtraBold.woff') format('woff'),
-        url('../../fonts/Axiforma-ExtraBold.ttf') format('truetype');
+    font-family: 'Play';
+    src: url('../../fonts/Play-Bold.eot');
+    src: url('../../fonts/Play-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/Play-Bold.woff2') format('woff2'),
+        url('../../fonts/Play-Bold.woff') format('woff'),
+        url('../../fonts/Play-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Axiforma';
-    src: url('../../fonts/Axiforma-Bold.eot');
-    src: url('../../fonts/Axiforma-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../../fonts/Axiforma-Bold.woff2') format('woff2'),
-        url('../../fonts/Axiforma-Bold.woff') format('woff'),
-        url('../../fonts/Axiforma-Bold.ttf') format('truetype');
+    font-family: 'Play';
+    src: url('../../fonts/Play-Regular.eot');
+    src: url('../../fonts/Play-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/Play-Regular.woff2') format('woff2'),
+        url('../../fonts/Play-Regular.woff') format('woff'),
+        url('../../fonts/Play-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../../fonts/TitilliumWeb-Bold.eot');
+    src: url('../../fonts/TitilliumWeb-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/TitilliumWeb-Bold.woff2') format('woff2'),
+        url('../../fonts/TitilliumWeb-Bold.woff') format('woff'),
+        url('../../fonts/TitilliumWeb-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../../fonts/TitilliumWeb-Black.eot');
+    src: url('../../fonts/TitilliumWeb-Black.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/TitilliumWeb-Black.woff2') format('woff2'),
+        url('../../fonts/TitilliumWeb-Black.woff') format('woff'),
+        url('../../fonts/TitilliumWeb-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}

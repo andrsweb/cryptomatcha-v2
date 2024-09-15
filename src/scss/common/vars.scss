@@ -15,8 +15,9 @@ $container-xl: 1540px;
 $container-padding: 20px;
 
 // Font families.
-$ff			: 'Serifa Std 55 Roman', sans-serif;
-$ff-title	: 'Axiforma', sans-serif;
+$ff    : 'Titillium Web', sans-serif;
+$ff-h1 : 'Rajdhani', sans-serif;
+$ff-title : 'Play', sans-serif;
 
 // Font sizes.
 $fs-xs	: 12px;
@@ -32,31 +33,23 @@ $fw-medium	: 500;
 $fw-bold	: 700;
 
 // Line heights.
-$lh			: 1.2;
+$lh			: 1;
+$lh-text	: 1.2;
 
 // Colors.
 $white		: #FBFEF9;
 $white-ghost: #f3f3f3;
 $black	 	: #000000;
 $black-rich	: #001514;
-$green		: #306B34;
+$green		: #0B6D44;
 $l-green    : #F4FFF8;
 $orange		: #F9854B;
 $red		: #93032E;
 
 // Box-shadow
-$bs-hover: -2px -2px 6px rgba(255, 255, 255, .6),
--2px -2px 4px rgba(255, 255, 255, .4),
-2px 2px 2px rgba(255, 255, 255, .05),
-2px 2px 4px rgba(0, 0, 0, .1);;
-$bs-main:   -6px -6px 14px rgba(255, 255, 255, .7),
--6px -6px 10px rgba(255, 255, 255, .5),
-6px 6px 8px rgba(255, 255, 255, .075),
-6px 6px 10px rgba(0, 0, 0, .15);
-$bs-active:	inset -2px -2px 6px rgba(255, 255, 255, .7),
-inset -2px -2px 4px rgba(255, 255, 255, .5),
-inset 2px 2px 2px rgba(255, 255, 255, .075),
-inset 2px 2px 4px rgba(0, 0, 0, .15);
+$bs-hover: rgba(0, 0, 0, 0.4) 0px 1px 3px, rgba(0, 0, 0, 0.3) 0px 4px 10px -2px, rgba(0, 0, 0, 0.2) 0px -2px 0px inset;
+$bs-main: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+$bs-active:rgba(0, 0, 0, 0.4) -1px -1px 1px, rgba(0, 0, 0, 0.5) 0px 4px 6px -8px, rgba(0, 0, 0, 0.1) 0px -1px 2px inset;
 
 // Others.
 $tr: 0.25s;

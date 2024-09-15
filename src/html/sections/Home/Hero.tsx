@@ -1,16 +1,53 @@
+import './Hero.scss'
+import h1 from '../../../assets/img/h1.jpg'
+import h2 from '../../../assets/img/h2.jpg'
+import h3 from '../../../assets/img/h3.jpg'
+import h4 from '../../../assets/img/h4.jpg'
+import h5 from '../../../assets/img/h5.jpg'
+import b1 from '../../../assets/img/b1.jpg'
+import b2 from '../../../assets/img/b2.jpg'
+import b3 from '../../../assets/img/b3.jpg'
+import b4 from '../../../assets/img/b4.jpg'
+import b5 from '../../../assets/img/b5.jpg'
+import star from '../../../assets/svg/logos/stargaze.svg'
+import Socials from './Socials'
 
 const Hero = () => {
 	return (
-		<div className="titles">
-			<h1>
-				Cryptomatcha
-			</h1>
-			<h2>Title h2</h2>
-			<h3>Title h3</h3>
-			<h4>Title h4</h4>
-			<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis minima nostrum quam dicta dolores non deleniti ullam blanditiis? Quae eius ab eos, ipsam sunt nam ipsa aliquid debitis, minima voluptas, sit officiis consectetur? Mollitia labore fugiat quam ad eaque dolores voluptate perferendis magnam odio itaque quaerat illum rem reiciendis id, consectetur adipisci ratione animi corporis eius optio maiores voluptas. Eligendi culpa odio in ad quia inventore a, atque quaerat officiis, iure magni quam sit suscipit at tenetur et, officia reprehenderit cumque fuga. Repellat numquam atque at esse accusantium sed eum adipisci, amet omnis excepturi vitae in nemo quis odit aut? Incidunt sit voluptatibus eveniet, fugit repudiandae quidem magnam dolore qui blanditiis, error eum dolor aliquam consectetur saepe eos vitae illum dolorem iste natus laboriosam distinctio rerum. Dicta corrupti, ipsa aliquid quia voluptatibus, hic facilis totam voluptatem, ipsum excepturi vel fugit earum alias. Nostrum iure ipsum animi nisi consequatur nihil quisquam, pariatur fugit error nemo dolorem doloribus vel rerum officiis repudiandae culpa doloremque quidem quae quos accusantium vitae explicabo expedita natus eos! Atque unde laboriosam dolorem nemo harum reiciendis, ullam enim odit vel dicta provident blanditiis nam tempora iste soluta earum rem, modi voluptas, quos explicabo! Quibusdam unde deserunt minima natus corporis itaque quam dolore ex repudiandae temporibus repellendus adipisci ratione odio iste voluptatem, placeat cupiditate fugiat pariatur eaque libero blanditiis debitis in numquam? Deleniti minima perspiciatis praesentium laudantium repudiandae expedita, sint nostrum repellat dicta vitae at qui suscipit quod corporis culpa ipsa commodi, asperiores recusandae nisi ad soluta! Qui et vel odit alias quaerat, sit obcaecati dolor doloribus praesentium enim omnis ullam accusamus porro possimus magnam eius mollitia totam culpa voluptatem ab quibusdam molestias nam? Eius vitae corporis nobis, minus, accusantium quia a dolorem eaque expedita pariatur earum repellendus magni cupiditate maiores sed explicabo dolore possimus architecto consequatur incidunt qui voluptatem culpa ipsam accusamus. Omnis, id? Atque dolore cumque adipisci esse eum reiciendis, temporibus laudantium, tenetur commodi ullam iusto asperiores recusandae facere sunt debitis. Deserunt soluta facilis, vero atque eveniet reiciendis? Non unde voluptatum tempora, aut aperiam facere quasi inventore deleniti, corporis nisi quaerat vero reiciendis nesciunt doloremque laborum eum sequi libero dolore beatae autem ducimus ullam, voluptates debitis voluptatem! Sint, earum quae dolore cum recusandae, deserunt aspernatur tempore tenetur numquam enim et atque. Reprehenderit ratione deserunt aliquid accusamus quaerat quos, dolorum provident adipisci repellat soluta modi ea odio expedita aperiam nemo animi dolorem. Minus dignissimos nam temporibus eos, soluta nemo delectus distinctio labore molestiae? Illo autem dignissimos iure suscipit! Quibusdam quia corporis, adipisci officiis officia suscipit similique voluptatum deserunt soluta eaque ad in dicta, fugiat reprehenderit obcaecati, facere iusto quaerat delectus tempora fugit! Tempora doloremque, suscipit, velit corrupti nesciunt quod vero voluptas accusantium explicabo quam aspernatur deserunt magni inventore pariatur hic deleniti nostrum beatae mollitia maiores ducimus ut. A et autem aliquid possimus architecto rerum ipsum consectetur aperiam eius voluptatum repellat natus maxime error, magni, ex veniam fuga neque nobis at! Quos voluptatum pariatur expedita? Rem inventore sint, incidunt repudiandae a repellendus voluptatibus deleniti voluptatum ipsa at consequatur quia assumenda magni facere dicta et ipsum mollitia consequuntur voluptas odit nisi, tenetur animi similique expedita. Dignissimos voluptas sunt tempore esse recusandae sint voluptates sed porro architecto tempora quis eius eos minus illo, natus commodi enim dolor inventore adipisci! Quos consectetur aspernatur tenetur obcaecati commodi qui corrupti facere cum a quod atque, cumque rerum autem quasi ratione. Sequi consectetur magnam, explicabo expedita at est minus nesciunt, suscipit obcaecati ut reiciendis fugit optio tenetur minima? Fugiat ullam commodi, voluptate eligendi saepe quisquam tempora nihil iusto illum tempore voluptas laudantium, provident doloribus quo, praesentium est ducimus veritatis! Harum eaque suscipit expedita delectus quod eveniet quisquam voluptatem sed? Iure illum facere error voluptate debitis illo minima! Mollitia quisquam cum ex, vero officia eveniet. Tempora eum, suscipit animi aperiam enim ratione dicta quas nihil autem eos tempore maiores natus consequuntur reprehenderit. Debitis ad autem expedita temporibus corrupti veritatis nulla commodi nostrum voluptas ex praesentium exercitationem reiciendis sit atque qui eos nisi beatae alias voluptatum obcaecati nihil quibusdam, totam repudiandae. Quam obcaecati quasi dicta inventore placeat, accusantium nihil, repellendus iusto saepe quo asperiores, earum sapiente voluptatum blanditiis eum vitae eaque nam quibusdam molestiae ipsam similique dolore magni mollitia impedit! Excepturi laborum voluptatibus dolore dolor doloremque ab ullam quae labore fugit, ducimus, voluptatem eum adipisci nam consequatur id, libero temporibus saepe rerum facilis. Ullam eligendi eum nostrum, sunt rerum culpa optio natus necessitatibus, dignissimos, quis laudantium officiis animi excepturi nulla maxime eos? Rerum blanditiis, aspernatur officia explicabo perspiciatis doloribus, ad omnis alias, voluptatibus minima est facilis. Dolorem nihil tempora eum. Aperiam ut dolore, perspiciatis temporibus deserunt adipisci explicabo nesciunt minima cum eum nostrum. Maiores aliquid, soluta sunt perspiciatis nostrum quas facere obcaecati necessitatibus asperiores rem officia aspernatur rerum reiciendis ea et laborum hic quibusdam? Tempora, quas. Neque error nisi quod obcaecati incidunt commodi velit ullam quisquam amet modi est enim iure ea excepturi molestias possimus cumque, eos consequuntur minima. Repudiandae, laborum. Necessitatibus, nesciunt! Commodi iure deserunt, ipsum eveniet quaerat perspiciatis quasi modi numquam obcaecati hic pariatur nisi nam illum. Quaerat laboriosam quod vero voluptatibus ab ullam, quia repellendus molestiae numquam sit magnam odit ut, dignissimos aliquid. Quas sed non ipsum asperiores eligendi aperiam possimus vel quam dolor reprehenderit corrupti optio nesciunt eum, molestiae blanditiis. Deleniti quisquam cumque vero quod consectetur obcaecati facilis exercitationem dolor, autem perspiciatis quibusdam atque, et ipsa? Quam amet qui hic id quibusdam illo, quos odio numquam! Sint enim perspiciatis soluta aperiam a culpa magnam nam consequatur optio iste iusto non commodi praesentium, in rerum vitae pariatur beatae reiciendis mollitia labore recusandae, facere expedita. Veniam esse provident ipsa soluta ea cum fuga dolorum nemo, iste laboriosam, officia sint? Fuga sit totam repellendus sed debitis velit in beatae itaque officia delectus nostrum officiis qui impedit, laboriosam ex eveniet provident neque doloremque consectetur ad necessitatibus! Magni natus mollitia quia asperiores molestiae tempora modi, dolorem ab pariatur fugit quaerat consequatur dicta eos, eveniet, exercitationem cupiditate voluptate excepturi. Voluptas ducimus nulla praesentium quia ipsa ea provident illo a veniam atque quo explicabo fuga, iste repellat sunt, mollitia dolores.</p>
-		</div>
-
+		<section className="hero">
+			<img className='hero-bg' src={star} alt="" />
+			<div className="container">
+				<div className="hero-wrapper">
+					<div className="hero-images">
+						<img src={h2} alt="" />
+						<img src={b3} alt="" />
+						<img src={h3} alt="" />
+						<img src={b5} alt="" />
+						<img src={b4} alt="" />
+						<img src={h1} alt="" />
+						<img src={b1} alt="" />
+						<img src={h5} alt="" />
+						<img src={b2} alt="" />
+						<img src={h4} alt="" />
+					</div>
+					<div className="hero-blocks">
+						<div className="hero-blocks-top">
+							<h1>Reach new horizons on <a href="https://www.stargaze.zone/" target='_blank'>Stargaze</a> with</h1>
+							<div className='hero-subtitle'>Cryptomatcha</div>
+							<p>
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus commodi iure quaerat sequi nesciunt ad dicta. Eius ab quibusdam perferendis laboriosam porro! Ad suscipit quis dolorem tenetur fugiat voluptatem ex?
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque labore libero harum expedita, ipsam, excepturi quibusdam enim at assumenda, odio mollitia nostrum voluptate. Saepe dicta laboriosam non voluptatem consectetur fugiat?
+							</p>
+						</div>
+						<div className="hero-blocks-bottom">
+							<Socials />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	)
 }
 

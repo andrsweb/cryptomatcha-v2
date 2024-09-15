@@ -1,0 +1,5 @@
+@import '../../common/mixins.scss';
+
+.button {
+	@include button();
+}

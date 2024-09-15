@@ -61,6 +61,9 @@
 }
 
 .disconnect-button {
+	display: flex;
+	align-items: center;
+	gap: 8px;
 	background-color: $red;
 	border-radius: $br10;
 	color: $white;
@@ -76,6 +79,12 @@
 	&:active {
 		background-color: #8f0608;
 		border-color: #8f0608;
+	}
+
+	@media(min-width: $xl) {
+		span {
+			display: none;
+		}
 	}
 }
 
@@ -101,9 +110,9 @@
 
 	&::after {
 		content: 'Account';
-		font-family: $ff-title;
+		font-family: $ff-h1;
 		font-weight: $fw-bold;
-		font-size: 16px;
+		font-size: 24px;
 		text-transform: uppercase;
 	}
 
@@ -114,6 +123,7 @@
 		left: auto;
 		top: auto;
 		padding: 4px;
+		font-size: 20px;
 
 		&::after {
 			display: none;

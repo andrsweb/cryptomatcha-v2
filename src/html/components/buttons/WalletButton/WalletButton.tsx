@@ -12,17 +12,18 @@ import { RPC_ENDPOINT } from "../../../../global/constants"
 import { formatAddress } from "../../../common/Header/functions"
 // Icons
 import { FaCopy } from "react-icons/fa"
-import { VscAccount } from "react-icons/vsc";
+import { FaRegUser } from "react-icons/fa"
+import { RiLogoutBoxRLine } from "react-icons/ri"
 
 const WalletButton = ({ chainName }: { chainName: string }) => {
     const { connect, isWalletConnected, address, disconnect } = useChain(chainName)
     const [balance, setBalance] = useState<number>(0)
     const [isFetchingBalance, setFetchingBalance] = useState<boolean>(false)
-    const [isConnecting, setIsConnecting] = useState<boolean>(false) // Добавлено состояние для лоадера подключения
+    const [isConnecting, setIsConnecting] = useState<boolean>(false)
 
     const handleConnect = async () => {
         if (!isWalletConnected) {
-            setIsConnecting(true) // Запускаем лоадер перед подключением
+            setIsConnecting(true)
             try {
                 await connect()
                 if (address) {
@@ -31,7 +32,7 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
             } catch (error) {
                 console.error("Connection error:", error)
             } finally {
-                setIsConnecting(false) // Останавливаем лоадер после подключения
+                setIsConnecting(false)
             }
         }
     }
@@ -97,10 +98,10 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
                         </div>
                     </div>
                     
-                    <button className='disconnect-button' onClick={() => disconnect()}>Disconnect</button>
+                    <button className='disconnect-button' onClick={() => disconnect()}> <span>Disconnect</span><RiLogoutBoxRLine /></button>
                     {address && (
                         <Link to="/user-dashboard" className="user-button">
-                            <VscAccount />
+                            <FaRegUser />
                         </Link>
                     )}
                 </div>
