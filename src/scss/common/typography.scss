@@ -14,15 +14,19 @@ h1, .h1 {
 	font-weight: $fw-bold;
 	line-height: $lh;
 	margin: 0;
-	font-size: 32px;
+	font-size: 24px;
 	color: $black-rich;
 	text-transform: uppercase;
 
-	@media (min-width: $lg) {
-		font-size: 40px;
+	@media (min-width: $md) {
+		font-size: 32px;
 	}
 
 	@media (min-width: $xxl) {
+		font-size: 40px;
+	}
+
+	@media (min-width: 1600px) {
 		font-size: 50px;
 	}
 }

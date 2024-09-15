@@ -26,9 +26,9 @@ const Hero = () => {
 						<img src={b4} alt="" />
 						<img src={h1} alt="" />
 						<img src={b1} alt="" />
-						<img src={h5} alt="" />
-						<img src={b2} alt="" />
 						<img src={h4} alt="" />
+						<img src={b2} alt="" />
+						<img src={h5} alt="" />
 					</div>
 					<div className="hero-blocks">
 						<div className="hero-blocks-top">
