@@ -1,15 +1,21 @@
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
 	font-family: $ff-title;
 	font-weight: $fw-bold;
 	line-height: $lh;
 	margin: 0;
 }
 
-h1, .h1 {
+h1,
+.h1 {
 	font-family: $ff-h1;
 	font-weight: $fw-bold;
 	line-height: $lh;
@@ -31,24 +37,55 @@ h1, .h1 {
 	}
 }
 
-h2, .h2 {
+h2,
+.h2 {
 	display: inline-block;
 	font-size: 32px;
 	color: $black;
 	text-align: left;
 	position: relative;
+	overflow: hidden;
 
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -10%;
-		display: block;
-		width: 75%;
-		background-color: $black-rich;
-		height: 4px;
-		border-radius: $br10;
-		box-shadow: $bs-main;
+	span {
+		display: inline-block;
+		position: relative;
+		animation: flyingChars 4s ease-in-out infinite;
+
+		&:nth-child(odd) {
+			animation-delay: 0.2s;
+		}
+
+		&:nth-child(even) {
+			animation-delay: 0.5s;
+		}
+
+		&::before {
+			content: attr(data-text);
+			position: absolute;
+			top: -10%;
+			left: 0;
+			color: $black;
+			filter: blur(3px);
+			opacity: 0;
+			transition: opacity $tr ease-in-out, filter ease $tr;
+		}
+	}
+
+	&:hover {
+		color: transparent;
+
+		span {
+			&::before {
+				content: attr(data-text);
+				position: absolute;
+				top: -10%;
+				left: 0;
+				color: $black;
+				filter: blur(3px);
+				opacity: 0.3;
+				transition: opacity 0.3s ease-in-out, filter ease $tr;
+			}
+		}
 	}
 
 	@media (min-width: $md) {
@@ -61,13 +98,15 @@ h2, .h2 {
 	}
 }
 
-h3, .h3 {
+h3,
+.h3 {
 	font-size: 32px;
 	color: $black;
 	text-transform: uppercase;
 }
 
-h4, .h4 {
+h4,
+.h4 {
 	font-size: $fs-xl;
 
 	@media (min-width: $lg) {
@@ -75,7 +114,8 @@ h4, .h4 {
 	}
 }
 
-h5, .h5 {
+h5,
+.h5 {
 	font-size: $fs-xl;
 	text-transform: uppercase;
 	margin-bottom: 24px;
@@ -85,7 +125,8 @@ h5, .h5 {
 	}
 }
 
-h6, .h6 {
+h6,
+.h6 {
 	font-size: $fs-lg
 }
 
@@ -105,6 +146,7 @@ p {
 	line-height: $lh-text;
 }
 
-b, strong {
+b,
+strong {
 	font-weight: $fw-bold
 }

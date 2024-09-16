@@ -56,4 +56,15 @@
 	100% {
 		transform: rotate(360deg) translateX(0);
 	}
-}	
+}
+
+@keyframes flyingChars {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-10px);
+	}
+}
