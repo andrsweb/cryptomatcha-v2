@@ -12,6 +12,8 @@
   "dependencies": {
     "@apollo/client": "^3.11.8",
     "@cosmos-kit/react": "^2.18.0",
+    "@react-three/drei": "^9.112.0",
+    "@react-three/fiber": "^8.17.7",
     "@types/aos": "^3.0.7",
     "aos": "^2.3.4",
     "axios": "^1.7.7",
@@ -23,6 +25,7 @@
     "react-router-dom": "^6.26.2",
     "react-toastify": "^10.0.5",
     "sass": "^1.78.0",
+    "three": "^0.168.0",
     "vite-plugin-node-polyfills": "^0.22.0",
     "zustand": "^4.5.5"
   },

@@ -72,8 +72,6 @@ h2,
 	}
 
 	&:hover {
-		color: transparent;
-
 		span {
 			&::before {
 				content: attr(data-text);
