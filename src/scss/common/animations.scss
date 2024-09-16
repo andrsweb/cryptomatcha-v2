@@ -29,3 +29,31 @@
 		right: 10%;
 	}
 }
+
+@keyframes fall {
+	0% {
+		top: -150px;
+		opacity: 0;
+		scale: 1;
+	}
+	30% {
+		opacity: 0.5;
+	}
+	100% {
+		top: 100%;
+		opacity: 0;
+		scale: 0.2;
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg) translateX(0);
+	}
+	50% {
+		transform: rotate(180deg) translateX(-40px);
+	}
+	100% {
+		transform: rotate(360deg) translateX(0);
+	}
+}	

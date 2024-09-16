@@ -41,7 +41,7 @@
 
 // Texts
 @mixin text-main() {
-	font-family: $ff;
+	font-family: $ff-title;
 	font-weight: $fw-regular;
 	font-size: 16px;
 	line-height: $lh-text;

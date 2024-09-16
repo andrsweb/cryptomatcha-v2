@@ -32,10 +32,24 @@ h1, .h1 {
 }
 
 h2, .h2 {
-	width: 100%;
+	display: inline-block;
 	font-size: 32px;
 	color: $black;
 	text-align: left;
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -10%;
+		display: block;
+		width: 75%;
+		background-color: $black-rich;
+		height: 4px;
+		border-radius: $br10;
+		box-shadow: $bs-main;
+	}
 
 	@media (min-width: $md) {
 		font-size: 60px;
