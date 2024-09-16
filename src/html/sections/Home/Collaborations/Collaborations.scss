@@ -1,0 +1,176 @@
+@import '../../../../scss/common/mixins.scss';
+
+.collaborations {
+	@include sectionPadding();
+
+	.title {
+		margin-bottom: 32px;
+
+		a {
+			color: $black-rich;
+		}
+	}
+
+	&-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 50px;
+		justify-content: center;
+		padding-top: 30px;
+
+		@media(min-width: $md) {
+			padding-top: 60px;
+			gap: 64px;
+		}
+	}
+
+	.collaborations-card {
+		width: calc(100% / 2);
+		max-width: 400px;
+		transition: .25s ease;
+
+		@media(min-width: $sm) {
+			width: calc(100% / 3);
+		}
+
+		&:first-child {
+			transform: rotate(-5deg);
+
+			.collaborations-card-inner {
+				&:before {
+					transform: translatey(-1%) rotate(10deg);
+				}
+
+				&:after {
+					transform: translatey(10%) rotate(4deg);
+				}
+			}
+
+			@media(min-width: $md) {
+				padding-top: 5%;
+			}
+		}
+
+		&:nth-child(2) {
+			.collaborations-card-inner {
+				&:before {
+					transform: translatey(3%) rotate(-6deg);
+				}
+
+				&:after {
+					transform: translatey(-8%) rotate(-4deg);
+				}
+			}
+		}
+
+		&:last-child {
+			transform: rotate(5deg);
+
+			.collaborations-card-inner {
+				&:before {
+					transform: translatey(6%) rotate(-4deg);
+				}
+
+				&:after {
+					transform: translatey(0) rotate(-9deg);
+				}
+			}
+
+			@media(min-width: $md) {
+				padding-top: 5%;
+			}
+		}
+
+		&:hover {
+			&:first-child {
+				padding-top: 0;
+
+				.collaborations-card-inner {
+					&:before {
+						transform: translatey(-3%) rotate(12deg);
+					}
+	
+					&:after {
+						transform: translatey(12%) rotate(6deg);
+					}
+				}
+			}
+
+			&:nth-child(2) {
+				padding-bottom: 5%;
+				.collaborations-card-inner {
+					&:before {
+						transform: translatey(5%) rotate(-8deg);
+					}
+	
+					&:after {
+						transform: translatey(-10%) rotate(-6deg);
+					}
+				}
+			}
+
+			&:last-child {
+				padding-top: 0;
+
+				.collaborations-card-inner {
+					&:before {
+						transform: translatey(8%) rotate(-6deg);
+					}
+	
+					&:after {
+						transform: translatey(7%) rotate(-11deg);
+					}
+				}
+			}
+		}
+
+		&-inner {
+			aspect-ratio: 3 / 2;
+			background-color: #FFF;
+			position: relative;
+			transition: $tr ease;
+			cursor: pointer;
+			padding: 5% 5% 10% 5%;
+			box-shadow: $bs-main;
+
+			&:before,
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+				height: 95%;
+				width: 95%;
+				box-shadow: $bs-main;
+				background-color: $white;
+				transform-origin: center center;
+				z-index: -1;
+				transition: ease $tr;
+				top: 0;
+				left: 0;
+			}
+
+			&:before {
+				transform: translatey(-2%) rotate(-6deg);
+			}
+
+			&:after {
+				transform: translatey(2%) rotate(6deg);
+			}
+
+			img {
+				width: 100%;
+				box-shadow: $bs-active;
+				aspect-ratio: 1 / 1;
+				object-fit: cover;
+				position: relative;
+			}
+
+			p {
+				padding-top: 16px;
+				text-align: center;
+				@include text-main();
+			}
+		}
+	}
+}

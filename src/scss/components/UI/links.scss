@@ -1,0 +1,9 @@
+.link-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&.end {
+		justify-content: flex-end;
+	}
+}

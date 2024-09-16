@@ -1,0 +1,17 @@
+.title {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	justify-content: space-between;
+
+	@media(min-width: $lg) {
+		flex-direction: row;
+	}
+
+	h2 {
+		@media(min-width: $sm) {
+			max-width: calc(100% - 102px);
+		}
+	}
+}

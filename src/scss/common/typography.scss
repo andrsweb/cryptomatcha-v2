@@ -39,11 +39,12 @@ h1,
 
 h2,
 .h2 {
-	display: inline-block;
+	display: flex;
 	font-size: 32px;
 	color: $black;
 	text-align: left;
 	position: relative;
+	word-wrap:normal;
 	overflow: hidden;
 
 	span {
