@@ -1,0 +1,59 @@
+@import '../../../../scss/common/mixins.scss';
+
+.about-us {
+	background-color: $white;
+	@include sectionPadding();
+
+	h2 {
+		color: $black-rich;
+	}
+
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 32px;
+
+		@media(min-width: $lg) {
+			flex-direction: row;
+			gap: 80px;
+		}
+
+		@media(min-width: $xl) {
+			gap: 100px;
+		}
+
+		@media(min-width: $xxl) {
+			gap: 150px;
+		}
+	}
+
+	&-left {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 100%;
+		gap: 30px;
+
+		@media(min-width: $lg) {
+			width: 50%;
+		}
+
+		p {
+			color: $white;
+			@include text-main();
+		}
+
+		a {
+			color: $black-rich;
+		}
+	}
+
+	&-right {
+		width: 70%;
+
+		@media(min-width: $lg) {
+			width: calc(50% - 150px);
+		}
+	}	
+}
