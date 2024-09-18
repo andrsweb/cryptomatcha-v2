@@ -1,88 +1,108 @@
+import { useState } from 'react'
 // Libs
 // Styles
-import "./Collaborations.scss";
+import "./Collaborations.scss"
 import '../../../../scss/components/blocks/title.scss'
 // Images
-import shitmos from "../../../../assets/img/home/collaborations/shitmos.jpg";
-import smokers from "../../../../assets/img/home/collaborations/smokers.jpeg";
-import shade from "../../../../assets/img/home/collaborations/shade.jpg";
+import shitmos from "../../../../assets/img/home/collaborations/shitmos.jpg"
+import smokers from "../../../../assets/img/home/collaborations/smokers.jpeg"
+import shade from "../../../../assets/img/home/collaborations/shade.jpg"
+import bigCat from '../../../../assets/svg/cats/big-orange-cat.svg'
+import CollaborationModal from '../../../components/Modals/CollaborationModal/CollaborationModal'
+import { CollaborationData } from './types'
+
 
 const Collaborations = () => {
-	return (
-		<section className="collaborations">
-			<div className="container">
-				<h2>
-					<span data-text="C">C</span>
-					<span data-text="o">o</span>
-					<span data-text="l">l</span>
-					<span data-text="l">l</span>
-					<span data-text="a">a</span>
-					<span data-text="b">b</span>
-					<span data-text="o">o</span>
-					<span data-text="r">r</span>
-					<span data-text="a">a</span>
-					<span data-text="t">t</span>
-					<span data-text="i">i</span>
-					<span data-text="o">o</span>
-					<span data-text="n">n</span>
-					<span data-text="s">s</span>
-				</h2>
-				<div className="collaborations-wrapper">
-					<div className="collaborations-card">
-						<div className="collaborations-card-img">
-							<img src={smokers} alt="" />
-						</div>
-						<div className="collaborations-card-inner">
-							<div className="collaborations-card-title">
-								Smoker Club
-							</div>
-							<p>
-								we have many traits in both collections which gives you membership in Smokers Club - place where you can join rumbles and other games and win nice NFTs. Also you can soft-stake smokers NFT on plstaking to earn SMKR token and join raffles there.
-							</p>
-							<div className="collaborations-card-links">
-								<a className="button" href="#" target="_blank">Discord</a>
-								<a className="button" href="#" target="_blank">Twitter</a>
-							</div>
-						</div>
-					</div>
-					<div className="collaborations-card">
-						<div className="collaborations-card-img">
-							<img src={shitmos} alt="" />
-						</div>
-						<div className="collaborations-card-inner">
-							<div className="collaborations-card-title">
-								Shitmos Economic Zone
-							</div>
-							<p>
-								we are the one of first collections who joined SEZ. 20% of our both collections royalties goes to SEZ treasury for buybacks of Shitmos - a real community moving memecoin in whole Cosmos Community is very strong and grows every day
-							</p>
-							<div className="collaborations-card-links">
-								<a className="button" href="#" target="_blank">Discord</a>
-								<a className="button" href="#" target="_blank">Twitter</a>
-							</div>
-						</div>
-					</div>
-					<div className="collaborations-card">
-						<div className="collaborations-card-img">
-							<img src={shade} alt="" />
-						</div>
-						<div className="collaborations-card-inner">
-							<div className="collaborations-card-title">
-								Seven green shade
-							</div>
-							<p>
-								we are the one of first collections who joined SEZ. 20% of our both collections royalties goes to SEZ treasury for buybacks of Shitmos - a real community moving memecoin in whole Cosmos Community is very strong and grows every day
-							</p>
-							<div className="collaborations-card-links">
-								<a className="button" href="#" target="_blank">Discord</a>
-								<a className="button" href="#" target="_blank">Twitter</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	);
-};
+    const [showModal, setShowModal] = useState<boolean>(false)
+    const [modalContent, setModalContent] = useState<CollaborationData | null>(null)
 
-export default Collaborations;
+    const handleMoreInfoClick = (content: CollaborationData) => {
+        setModalContent(content)
+        setShowModal(true)
+    }
+
+    const handleCloseModal = () => {
+        setShowModal(false)
+        setModalContent(null)
+    }
+
+    const collaborations: CollaborationData[] = [
+        {
+            imgSrc: smokers,
+            title: "Smoker Club",
+            description: "We have many traits in both collections which gives you membership in Smokers Club - a place where you can join rumbles and other games and win nice NFTs. Also, you can soft-stake Smokers NFT on Plstaking to earn SMKR token and join raffles there.",
+            discordLink: "#",
+            twitterLink: "#",
+        },
+        {
+            imgSrc: shitmos,
+            title: "Shitmos Economic Zone",
+            description: "We are one of the first collections to join SEZ. 20% of our both collections' royalties go to the SEZ treasury for buybacks of Shitmos - a real community moving memecoin in the whole Cosmos Community is very strong and grows every day.",
+            discordLink: "#",
+            twitterLink: "#",
+        },
+        {
+            imgSrc: shade,
+            title: "Seven Green Shade",
+            description: "We are one of the first collections to join SEZ. 20% of our both collections' royalties go to the SEZ treasury for buybacks of Shitmos - a real community moving memecoin in the whole Cosmos Community is very strong and grows every day.",
+            discordLink: "#",
+            twitterLink: "#",
+        },
+        {
+            imgSrc: shade,
+            title: "Seven Green Shade",
+            description: "We are one of the first collections to join SEZ. 20% of our both collections' royalties go to the SEZ treasury for buybacks of Shitmos - a real community moving memecoin in the whole Cosmos Community is very strong and grows every day.",
+            discordLink: "#",
+            twitterLink: "#",
+        },
+    ]
+
+    return (
+        <section className="collaborations">
+            <div className="container">
+                <h2>
+                    <span data-text="C">C</span>
+                    <span data-text="o">o</span>
+                    <span data-text="l">l</span>
+                    <span data-text="l">l</span>
+                    <span data-text="a">a</span>
+                    <span data-text="b">b</span>
+                    <span data-text="o">o</span>
+                    <span data-text="r">r</span>
+                    <span data-text="a">a</span>
+                    <span data-text="t">t</span>
+                    <span data-text="i">i</span>
+                    <span data-text="o">o</span>
+                    <span data-text="n">n</span>
+                    <span data-text="s">s</span>
+                </h2>
+                <div className="collaborations-wrapper">
+                    {collaborations.map((collab, index) => (
+                        <div className="collaborations-card" key={index}>
+                            <div className="collaborations-card-cat">
+                                <img src={bigCat} alt="" />
+                            </div>
+                            <div className="collaborations-card-img">
+                                <img src={collab.imgSrc} alt="" />
+                            </div>
+                            <div className="collaborations-card-inner">
+                                <div className="collaborations-card-title">
+                                    {collab.title}
+                                </div>
+                                <p>
+                                    {collab.description}
+                                </p>
+                                <div className="collaborations-card-links">
+                                    <button className='button' onClick={() => handleMoreInfoClick(collab)}>More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <CollaborationModal show={showModal} onClose={handleCloseModal} content={modalContent} />
+        </section>
+    )
+}
+
+export default Collaborations

@@ -1,5 +1,5 @@
 import { Suspense, useRef, useEffect, useState } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useGLTF, Environment } from '@react-three/drei'
 import * as THREE from 'three'
 import { WINDOW_INNER_WIDTH_MD, WINDOW_INNER_WIDTH_XL, WINDOW_INNER_WIDTH_XXL } from '../../../../global/constants'
@@ -16,31 +16,38 @@ const RotatingMesh = ({ scene }: RotatingMeshProps) => {
   })
   const [swayAmplitude] = useState(0.1)
   const [swaySpeed] = useState(1)
+  const { invalidate } = useThree() // Хук для принудительного рендеринга
+
+  const updateScale = () => {
+    const width = window.innerWidth
+    switch (true) {
+      case width < WINDOW_INNER_WIDTH_MD:
+        setScale([1.5, 1.5, 1.5])
+        break
+      case width < WINDOW_INNER_WIDTH_XL:
+        setScale([1.2, 1.2, 1.2])
+        break
+      case width < WINDOW_INNER_WIDTH_XXL:
+        setScale([1.4, 1.4, 1.4])
+        break
+      default:
+        setScale([1.5, 1.5, 1.5])
+    }
+    invalidate() // Заставляем сцену перерендериться
+  }
 
   useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth
-      switch (true) {
-        case width < WINDOW_INNER_WIDTH_MD:
-          setScale([1.5, 1.5, 1.5])
-          break
-        case width < WINDOW_INNER_WIDTH_XL:
-          setScale([1.2, 1.2, 1.2])
-          break
-        case width < WINDOW_INNER_WIDTH_XXL:
-          setScale([1.4, 1.4, 1.4])
-          break
-        default:
-          setScale([1.5, 1.5, 1.5])
-      }
-    }
+    // Первоначальная установка скейла
+    updateScale()
 
-    handleResize()
+    // Добавляем обработчики событий на resize и изменение ориентации экрана
+    window.addEventListener('resize', updateScale)
+    window.addEventListener('orientationchange', updateScale)
 
-    window.addEventListener('resize', handleResize)
-
+    // Чистим события при размонтировании компонента
     return () => {
-      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('resize', updateScale)
+      window.removeEventListener('orientationchange', updateScale)
     }
   }, [])
 

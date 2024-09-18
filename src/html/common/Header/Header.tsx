@@ -1,7 +1,7 @@
 import './Header.scss'
 import "@interchain-ui/react/styles"
 import { WINDOW_INNER_WIDTH_XL } from "../../../global/constants"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { ChainProvider } from "@cosmos-kit/react"
 import { ThemeProvider } from "@interchain-ui/react"
 import { ChainRegistryClient } from "@chain-registry/client"
@@ -10,13 +10,14 @@ import { wallets as leap } from "@cosmos-kit/leap"
 import WalletButton from "../../components/buttons/WalletButton/WalletButton"
 import HeaderLogo from './HeaderLogo'
 import NavLeft from '../Nav/HeaderNav/NavLeft'
-import NavRight from '../Nav/HeaderNav/NavLeft'
+import NavRight from '../Nav/HeaderNav/NavRight'
 import BorderLink from "../../components/Links/BorderLink"
 import { sessionOptions } from "./functions"
 import { walletConnectOptions } from "./functions"
 import { FaBars, FaTimes } from "react-icons/fa"
 import { Link } from 'react-router-dom'
 import logo from '../../../assets/svg/logos/header-logo.svg'
+import { toggleBodyScroll } from '../../../global/functions'
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false)
@@ -26,6 +27,7 @@ const Header = () => {
 
 	const [chains, setChains] = useState<any[]>([])
 	const [assets, setAssets] = useState<any[]>([])
+	const mobileMenuRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
 		(async () => {
@@ -52,13 +54,13 @@ const Header = () => {
 
 	useEffect(() => {
 		if (menuOpen) {
-			document.body.classList.add('menu-open')
+			toggleBodyScroll(true)
 		} else {
-			document.body.classList.remove('menu-open')
+			toggleBodyScroll(false)
 		}
 
 		return () => {
-			document.body.classList.remove('menu-open')
+			toggleBodyScroll(false)
 		}
 	}, [menuOpen])
 
@@ -77,14 +79,14 @@ const Header = () => {
 					name: 'custom',
 					vars: {
 						colors: {
-							primary500: '#1a73e8'
+							primary500: '#1a73e8',
 						},
 						space: {
 							sm: '8px',
-							lg: '24px'
-						}
+							lg: '24px',
+						},
 					},
-				}
+				},
 			]}
 			customTheme="custom"
 		>
@@ -114,8 +116,7 @@ const Header = () => {
 							</div>
 						</div>
 					</div>
-					<div className={`mobile-menu ${menuOpen ? 'opened' : ''}`}>
-
+					<div className={`mobile-menu ${menuOpen ? 'opened' : ''}`} ref={mobileMenuRef}>
 						<BorderLink href="/apps" text="Apps" />
 						<Link className='menu-logo' to="/">
 							<img src={logo} alt="" />
@@ -123,7 +124,6 @@ const Header = () => {
 						<NavLeft />
 						<NavRight />
 						{chains.length > 0 && <WalletButton chainName={chains[0].chain_name} />}
-
 					</div>
 				</header>
 			</ChainProvider>

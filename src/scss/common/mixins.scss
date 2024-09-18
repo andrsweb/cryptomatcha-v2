@@ -59,15 +59,15 @@
 @mixin text-sm() {
 	font-family: $ff-title;
 	font-weight: $fw-regular;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: $lh-text;
 	color: $black-rich;
 
 	@media(min-width: $md) {
-		font-size: 18px;
+		font-size: 14px;
 	}
 
 	@media(min-width: $xl) {
-		font-size: 20px;
+		font-size: 16px;
 	}
 }

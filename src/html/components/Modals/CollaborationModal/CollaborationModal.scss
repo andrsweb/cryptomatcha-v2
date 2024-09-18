@@ -1,0 +1,35 @@
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f1f1f1;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.modal-img {
+    margin-bottom: 15px;
+}
+
+.modal-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.modal-links {
+    margin-top: 15px;
+}
+
+.modal-links a {
+    margin-right: 10px;
+    font-size: 24px;
+    color: #333;
+}
