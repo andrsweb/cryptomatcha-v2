@@ -1,5 +1,4 @@
 // Libs
-import { Link } from "react-router-dom";
 // Styles
 import "./Collaborations.scss";
 import '../../../../scss/components/blocks/title.scss'
@@ -12,53 +11,75 @@ const Collaborations = () => {
 	return (
 		<section className="collaborations">
 			<div className="container">
-				<div className="title">
-					<h2>
-						<span data-text="T">T</span>
-						<span data-text="o">o</span>
-						<span data-text="p">p</span>
-						&nbsp;
-						<span data-text="C">C</span>
-						<span data-text="o">o</span>
-						<span data-text="l">l</span>
-						<span data-text="l">l</span>
-						<span data-text="a">a</span>
-						<span data-text="b">b</span>
-						<span data-text="o">o</span>
-						<span data-text="r">r</span>
-						<span data-text="a">a</span>
-						<span data-text="t">t</span>
-						<span data-text="i">i</span>
-						<span data-text="o">o</span>
-						<span data-text="n">n</span>
-						<span data-text="s">s</span>
-					</h2>
-					<Link className='button' to="collaborations">
-						View All
-					</Link>
-				</div>
-
+				<h2>
+					<span data-text="C">C</span>
+					<span data-text="o">o</span>
+					<span data-text="l">l</span>
+					<span data-text="l">l</span>
+					<span data-text="a">a</span>
+					<span data-text="b">b</span>
+					<span data-text="o">o</span>
+					<span data-text="r">r</span>
+					<span data-text="a">a</span>
+					<span data-text="t">t</span>
+					<span data-text="i">i</span>
+					<span data-text="o">o</span>
+					<span data-text="n">n</span>
+					<span data-text="s">s</span>
+				</h2>
 				<div className="collaborations-wrapper">
 					<div className="collaborations-card">
-						<div className="collaborations-card-inner">
-							<img src={shitmos} alt="" />
-							<p>Shitmos</p>
-						</div>
-					</div>
-					<div className="collaborations-card">
-						<div className="collaborations-card-inner">
+						<div className="collaborations-card-img">
 							<img src={smokers} alt="" />
-							<p>Smokers Club</p>
+						</div>
+						<div className="collaborations-card-inner">
+							<div className="collaborations-card-title">
+								Smoker Club
+							</div>
+							<p>
+								we have many traits in both collections which gives you membership in Smokers Club - place where you can join rumbles and other games and win nice NFTs. Also you can soft-stake smokers NFT on plstaking to earn SMKR token and join raffles there.
+							</p>
+							<div className="collaborations-card-links">
+								<a className="button" href="#" target="_blank">Discord</a>
+								<a className="button" href="#" target="_blank">Twitter</a>
+							</div>
 						</div>
 					</div>
 					<div className="collaborations-card">
+						<div className="collaborations-card-img">
+							<img src={shitmos} alt="" />
+						</div>
 						<div className="collaborations-card-inner">
+							<div className="collaborations-card-title">
+								Shitmos Economic Zone
+							</div>
+							<p>
+								we are the one of first collections who joined SEZ. 20% of our both collections royalties goes to SEZ treasury for buybacks of Shitmos - a real community moving memecoin in whole Cosmos Community is very strong and grows every day
+							</p>
+							<div className="collaborations-card-links">
+								<a className="button" href="#" target="_blank">Discord</a>
+								<a className="button" href="#" target="_blank">Twitter</a>
+							</div>
+						</div>
+					</div>
+					<div className="collaborations-card">
+						<div className="collaborations-card-img">
 							<img src={shade} alt="" />
-							<p>Seven Green Shade</p>
+						</div>
+						<div className="collaborations-card-inner">
+							<div className="collaborations-card-title">
+								Seven green shade
+							</div>
+							<p>
+								we are the one of first collections who joined SEZ. 20% of our both collections royalties goes to SEZ treasury for buybacks of Shitmos - a real community moving memecoin in whole Cosmos Community is very strong and grows every day
+							</p>
+							<div className="collaborations-card-links">
+								<a className="button" href="#" target="_blank">Discord</a>
+								<a className="button" href="#" target="_blank">Twitter</a>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div className="link-wrapper end"></div>
 			</div>
 		</section>
 	);

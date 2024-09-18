@@ -2,7 +2,7 @@ import { Suspense, useRef, useEffect, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Environment } from '@react-three/drei'
 import * as THREE from 'three'
-import { WINDOW_INNER_WIDTH_MD } from '../../../../global/constants'
+import { WINDOW_INNER_WIDTH_MD, WINDOW_INNER_WIDTH_XL, WINDOW_INNER_WIDTH_XXL } from '../../../../global/constants'
 
 interface RotatingMeshProps {
   scene: THREE.Group
@@ -12,18 +12,26 @@ const RotatingMesh = ({ scene }: RotatingMeshProps) => {
   const meshRef = useRef<THREE.Group>(null)
   const [scale, setScale] = useState([1.5, 1.5, 1.5])
   const [rotationSpeeds] = useState({
-    x: Math.random() * 0.1 + 0.2,
     y: Math.random() * 0.1 + 0.2,
-    z: Math.random() * 0.3 + 0.1,
   })
+  const [swayAmplitude] = useState(0.1)
+  const [swaySpeed] = useState(1)
 
- 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < WINDOW_INNER_WIDTH_MD) {
-        setScale([1.2, 1.2, 1.2]) 
-      } else {
-        setScale([1.5, 1.5, 1.5])
+      const width = window.innerWidth
+      switch (true) {
+        case width < WINDOW_INNER_WIDTH_MD:
+          setScale([1.5, 1.5, 1.5])
+          break
+        case width < WINDOW_INNER_WIDTH_XL:
+          setScale([1.2, 1.2, 1.2])
+          break
+        case width < WINDOW_INNER_WIDTH_XXL:
+          setScale([1.4, 1.4, 1.4])
+          break
+        default:
+          setScale([1.5, 1.5, 1.5])
       }
     }
 
@@ -39,13 +47,20 @@ const RotatingMesh = ({ scene }: RotatingMeshProps) => {
   useFrame(({ clock }) => {
     if (meshRef.current) {
       const elapsedTime = clock.getElapsedTime()
-      meshRef.current.rotation.x = elapsedTime * rotationSpeeds.x
       meshRef.current.rotation.y = elapsedTime * rotationSpeeds.y
-      meshRef.current.rotation.z = elapsedTime * rotationSpeeds.z
+      meshRef.current.position.y = Math.sin(elapsedTime * swaySpeed) * swayAmplitude
     }
   })
 
-  return <primitive ref={meshRef} object={scene} scale={scale} />
+  return (
+    <primitive
+      ref={meshRef}
+      object={scene}
+      scale={scale}
+      position={[0, 0, 0]}
+      rotation={[2, Math.PI, 0.5]}
+    />
+  )
 }
 
 const Logo3D = () => {
@@ -54,25 +69,25 @@ const Logo3D = () => {
 
   useEffect(() => {
     if (lightRef.current) {
-      lightRef.current.target.position.set(40, 30, -40)
+      lightRef.current.target.position.set(10, 10, 10)
       lightRef.current.updateMatrixWorld()
     }
   }, [])
 
   return (
-    <Canvas>
-      <ambientLight intensity={1} />
+    <Canvas className='canvas'>
+      <ambientLight intensity={0.8} />
       <directionalLight
         ref={lightRef}
-        position={[1, 1, 0]}
-        intensity={1.5}
+        position={[10, 10, 10]}
+        intensity={1.2}
         castShadow
       />
       <pointLight
-        position={[12, 24, 10]}
-        intensity={1}
+        position={[2, 2, 2]}
+        intensity={1.8}
         distance={20}
-        decay={2}
+        decay={1}
         color="#ffffff"
       />
       <Environment preset="night" />
