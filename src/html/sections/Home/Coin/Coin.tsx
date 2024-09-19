@@ -8,18 +8,7 @@ const Coin = () => {
 				<div className="coin-wrapper">
 					<div className="coin-info">
 						<h2>
-							<span data-text="G">G</span>
-							<span data-text="r">r</span>
-							<span data-text="o">o</span>
-							<span data-text="w">w</span>
-							&nbsp;
-							<span data-text="w">w</span>
-							<span data-text="i">i</span>
-							<span data-text="t">t</span>
-							<span data-text="h">h</span>
-							&nbsp;
-							<span data-text="u">u</span>
-							<span data-text="s">s</span>
+							Grow With Us
 						</h2>
 
 						<p>

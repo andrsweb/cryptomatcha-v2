@@ -6,3 +6,8 @@ export const toggleBodyScroll = (shouldBlock: boolean) => {
 		body.classList.remove('no-scroll')
 	}
 }
+
+export const removeHtmlTags = (text: string) => {
+	const doc = new DOMParser().parseFromString(text, 'text/html')
+	return doc.body.textContent || ''
+}

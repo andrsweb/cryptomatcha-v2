@@ -12,7 +12,7 @@ const GlobalCards = () => {
 								50 +
 							</div>
 							<p>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam sequi ab delectus recusandae obcaecati esse aperiam est ex doloribus! Nesciunt rerum sit aut laborum cupiditate excepturi aperiam quaerat voluptates dolor.
+								Lorem ipsum dolor
 							</p>
 						</div>
 					</div>
@@ -22,7 +22,7 @@ const GlobalCards = () => {
 								40 %
 							</div>
 							<p>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam sequi ab delectus recusandae obcaecati esse aperiam est ex doloribus! Nesciunt rerum sit aut laborum cupiditate excepturi aperiam quaerat voluptates dolor.
+								Lorem ipsum dolor
 							</p>
 						</div>
 					</div>
@@ -32,7 +32,7 @@ const GlobalCards = () => {
 								150 +
 							</div>
 							<p>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam sequi ab delectus recusandae obcaecati esse aperiam est ex doloribus! Nesciunt rerum sit aut laborum cupiditate excepturi aperiam quaerat voluptates dolor.
+								Lorem ipsum dolor
 							</p>
 						</div>
 					</div>

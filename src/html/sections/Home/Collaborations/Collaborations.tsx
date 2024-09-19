@@ -1,5 +1,9 @@
-import { useState } from 'react'
 // Libs
+import { useState } from 'react'
+// Types
+import { CollaborationData } from './types'
+// Components
+import CollaborationModal from '../../../components/Modals/CollaborationModal/CollaborationModal'
 // Styles
 import "./Collaborations.scss"
 import '../../../../scss/components/blocks/title.scss'
@@ -8,9 +12,6 @@ import shitmos from "../../../../assets/img/home/collaborations/shitmos.jpg"
 import smokers from "../../../../assets/img/home/collaborations/smokers.jpeg"
 import shade from "../../../../assets/img/home/collaborations/shade.jpg"
 import bigCat from '../../../../assets/svg/cats/big-orange-cat.svg'
-import CollaborationModal from '../../../components/Modals/CollaborationModal/CollaborationModal'
-import { CollaborationData } from './types'
-
 
 const Collaborations = () => {
     const [showModal, setShowModal] = useState<boolean>(false)
@@ -61,20 +62,7 @@ const Collaborations = () => {
         <section className="collaborations">
             <div className="container">
                 <h2>
-                    <span data-text="C">C</span>
-                    <span data-text="o">o</span>
-                    <span data-text="l">l</span>
-                    <span data-text="l">l</span>
-                    <span data-text="a">a</span>
-                    <span data-text="b">b</span>
-                    <span data-text="o">o</span>
-                    <span data-text="r">r</span>
-                    <span data-text="a">a</span>
-                    <span data-text="t">t</span>
-                    <span data-text="i">i</span>
-                    <span data-text="o">o</span>
-                    <span data-text="n">n</span>
-                    <span data-text="s">s</span>
+                    Collaborations
                 </h2>
                 <div className="collaborations-wrapper">
                     {collaborations.map((collab, index) => (

@@ -1,0 +1,32 @@
+@import '../../../scss/common/mixins.scss';
+
+.title {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 30px;
+	margin-bottom: 30px;
+
+	@media(min-width: $lg) {
+		margin-bottom: 100px;
+	}
+
+	&-info {
+		width: 90%;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+
+		p {
+			@include text-main();
+		}
+
+		@media(min-width: $lg) {
+			width: 60%;
+		}
+	}
+
+	a {
+		color: $black-rich;
+	}
+}

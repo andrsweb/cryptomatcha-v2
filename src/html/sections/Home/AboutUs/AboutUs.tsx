@@ -8,16 +8,8 @@ const AboutUs = () => {
 			<div className="container">
 				<div className="about-us-wrapper">
 					<div className="about-us-left">
-						<h2><span data-text="W">W</span>
-							<span data-text="h">h</span>
-							<span data-text="o">o</span>
-							&nbsp;
-							<span data-text="w">w</span>
-							<span data-text="e">e</span>
-							&nbsp;
-							<span data-text="a">a</span>
-							<span data-text="r">r</span>
-							<span data-text="e">e</span>
+						<h2>
+							Who we are
 						</h2>
 
 						<p>

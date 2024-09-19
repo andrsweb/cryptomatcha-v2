@@ -45,47 +45,6 @@ h2,
 	text-align: left;
 	position: relative;
 	word-wrap:normal;
-	overflow: hidden;
-
-	span {
-		display: inline-block;
-		position: relative;
-		animation: flyingChars 4s ease-in-out infinite;
-
-		&:nth-child(odd) {
-			animation-delay: 0.2s;
-		}
-
-		&:nth-child(even) {
-			animation-delay: 0.5s;
-		}
-
-		&::before {
-			content: attr(data-text);
-			position: absolute;
-			top: -10%;
-			left: 0;
-			color: $black;
-			filter: blur(3px);
-			opacity: 0;
-			transition: opacity $tr ease-in-out, filter ease $tr;
-		}
-	}
-
-	&:hover {
-		span {
-			&::before {
-				content: attr(data-text);
-				position: absolute;
-				top: -10%;
-				left: 0;
-				color: $black;
-				filter: blur(3px);
-				opacity: 0.3;
-				transition: opacity 0.3s ease-in-out, filter ease $tr;
-			}
-		}
-	}
 
 	@media (min-width: $md) {
 		font-size: 60px;
@@ -99,9 +58,17 @@ h2,
 
 h3,
 .h3 {
-	font-size: 32px;
+	font-size: 18px;
 	color: $black;
 	text-transform: uppercase;
+
+	@media (min-width: $lg) {
+		font-size: 20px;
+	}
+
+	@media (min-width: $xxl) {
+		font-size: 24px;
+	}
 }
 
 h4,
