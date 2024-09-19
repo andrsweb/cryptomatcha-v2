@@ -1,0 +1,93 @@
+.users-list {
+	min-height: 501px;
+}
+
+.users-items {
+	display: flex;
+	flex-direction: column;
+
+	&-titles {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+		padding: 0 16px;
+		margin-bottom: 16px;
+
+		.user-item-title {
+			display: flex;
+
+			&:first-child {
+				width: 30%;
+			}
+	
+			&:nth-child(2) {
+				width: 50%;
+			}
+	
+			&:last-child {
+				width: 20%;
+			}
+
+			span {
+				font-family: $ff;
+				font-weight: $fw-bold;
+				font-size: 16px;
+				transition: opacity ease $tr;
+				display: flex;
+				align-items: center;
+				gap: 5px;
+				cursor: pointer;
+
+				&:hover {
+					opacity: $op;
+				}
+			}
+		}
+	}
+}
+
+.user-item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	background-color: $white;
+	gap: 32px;
+	padding: 0 16px;
+	border-radius: 12px;
+	border: 1px solid $black-rich;
+	font-family: $ff;
+	font-weight: $fw-regular;
+	font-size: 16px;
+
+	&:first-child {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		border-bottom: 0;
+	}
+
+	&:nth-child(n + 2) {
+		border-bottom: 0;
+		border-radius: 0;
+	}
+
+	&:last-child {
+		border-bottom: 1px solid $black-rich;
+		border-bottom-left-radius: 12px;
+		border-bottom-right-radius: 12px;
+	}
+}
+
+.user-name {
+	width: 30%;
+	border-right: 1px solid $black-rich;
+	white-space: nowrap;
+	overflow: hidden; 
+	text-overflow: ellipsis;
+}
+.user-address {
+	width: 50%;
+	border-right: 1px solid $black-rich;
+}
+.user-date {
+	width: 20%;
+}

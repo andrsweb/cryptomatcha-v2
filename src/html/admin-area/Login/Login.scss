@@ -1,0 +1,135 @@
+.login {
+	padding: 60px 0;
+	background: rgb(228,248,205);
+	background: linear-gradient(3deg, rgba(228,248,205,1) 0%, rgba(74,150,91,1) 100%); 
+
+	&-wrapper {
+		min-height: calc(100vh - 120px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	form {
+		width: 100%;
+		max-width: 400px;
+		background-color: $white;
+		border-radius: 24px;
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+	}
+
+	legend {
+		font-family: $ff-title;
+		font-size: 60px;
+		color: $black-rich;
+		font-weight: $fw-bold;
+		line-height: 1;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	fieldset {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.input-wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		label {
+			font-family: $ff;
+			font-weight: $fw-bold;
+		}
+
+		input {
+			width: 100%;
+			padding: 8px 20px;
+			border-radius: 24px;
+			border: 2px solid $black-rich;
+			font-family: $ff;
+			font-weight: $fw-regular;
+			color: $black-rich;
+			font-size: 16px;
+
+			&::placeholder {
+				font-family: $ff;
+				font-weight: $fw-regular;
+				font-size: 16px;
+				color: $black-rich;
+			}
+		}
+	}
+
+	.loader {
+		width: 20px;
+		height: 20px;
+		border: 3px solid white;
+		border-radius: 50%;
+		border-top-color: transparent;
+		animation: spin 1s linear infinite;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.button-wrapper {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		margin-top: 30px;
+		position: relative;
+		padding-top: 30px;
+
+		p {
+			font-family: $ff;
+			font-weight: $fw-regular;
+			font-size: 16px;
+			text-align: center;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: -15px;
+	
+			&.success-message {
+				color: $green;
+			}
+	
+			&.error-message {
+				color: $black-rich;
+			}
+		}
+
+		button {
+			padding: 8px 30px;
+			border: 2px solid $green;
+			border-radius: 24px;
+			background-color: $green;
+			color: $white;
+			font-family: $ff;
+			font-weight: $fw-bold;
+			font-size: 16px;
+			transition: opacity ease $tr;
+	
+			&:disabled {
+				opacity: 0.4;
+				cursor: not-allowed;
+			}
+		}
+	}
+}

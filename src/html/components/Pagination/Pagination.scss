@@ -1,0 +1,85 @@
+@import '../../../scss/common/mixins.scss';
+
+.pagination {
+    display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+	align-items: center;
+	gap: 6px;
+
+	@media(min-width: $md) {
+		gap: 12px;
+	}
+
+    &-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 30px;
+		height: 30px;
+		border: 1px solid $black;
+		border-radius: $br10;
+		background-color: $white;
+		font-family: $ff;
+		font-size: 12px;
+		padding: 4px;
+		font-weight: $fw-bold;
+
+		&.active {
+			background-color: $green;
+			color: $white;
+			border-color: $green;
+		}
+
+        &:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+
+			&:hover {
+				background-color: $white;
+				color: $black;
+				border-color: black;
+			}
+        }
+
+		@media(min-width: $md) {
+			width: 40px;
+			height: 40px;
+			font-size: 16px;
+		}
+    }
+
+	&-prev {
+		margin-right: 10px;
+
+		@media(min-width: $md) {
+			margin-right: 30px;
+		}
+	}
+
+	&-next {
+		margin-left: 10px;
+
+		@media(min-width: $md) {
+			margin-left: 30px;
+		}
+	}
+
+	&-dots {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		font-family: $ff;
+		font-size: 16px;
+		padding: 4px;
+		font-weight: $fw-bold;
+
+		@media(min-width: $md) {
+			font-size: 26px;
+			width: 50px;
+			height: 50px;
+		}
+	}
+}

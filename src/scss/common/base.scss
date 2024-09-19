@@ -52,6 +52,22 @@ form, fieldset {
 	border: 0;
 }
 
+input {
+	padding: 8px 32px;
+	margin: 0;
+	border-radius: $br10;
+	border: 0;
+	box-shadow: $bs-main;
+	font-family: $ff;
+	font-weight: $fw-regular;
+	line-height: $lh;
+	color: $black-rich;
+
+	&::placeholder {
+
+	}
+}
+
 button {
 	display: flex;
 	justify-content: center;

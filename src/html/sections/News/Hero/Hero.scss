@@ -1,0 +1,62 @@
+@import '../../../../scss/common/mixins.scss';
+
+.hero-news {
+	padding: 90px 0;
+	overflow: hidden;
+	position: relative;
+	min-height: calc(100vh - 75px);
+
+	.hero-news-bg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 0;
+		width: 100vw;
+		min-height: 100%;
+		object-fit: cover;
+	}
+
+	.hero-news-info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 40px;
+		margin: 0 auto;
+		max-width: 830px;
+		position: relative;
+		z-index: 1;
+
+		.red-cat, .grey-cat {
+			position: absolute;
+		}
+	
+		.red-cat {
+			left: -200px;
+			top: 20%;
+		}
+	
+		.grey-cat {
+			right: -250px;
+			bottom: 200px;
+		}
+
+		h1 {
+			text-align: center;
+			line-height: 1;
+			color: $black-rich;
+		}
+
+		p {
+			text-align: center;
+			@include text-sm();
+
+			& {
+				font-weight: $fw-bold;
+			}
+		}
+
+		.button-explore {
+			margin-top: 150px;
+		}
+	}
+}

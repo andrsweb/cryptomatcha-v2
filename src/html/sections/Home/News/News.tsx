@@ -1,5 +1,6 @@
 // Libs
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import DOMPurify from 'dompurify'
@@ -17,6 +18,7 @@ import './News.scss'
 import { Post } from './types'
 // Images
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'
+
 
 const News = () => {
 	const [posts, setPosts] = useState<Post[]>([])
@@ -72,7 +74,7 @@ const News = () => {
 				>
 					{posts.map((post) => (
 						<SwiperSlide key={post.id}>
-							<a href={`/news/${post.category_name}/${post.slug}`} className='news-slide'>
+							<Link to={`/news/${post.category_name}/${post.slug}`} className='news-slide'>
 								<div className="news-slide-box">
 									<div className='news-slide-img'>
 										<img src={`${API_BASE_URL}${post.image_path}`} alt={post.title} />
@@ -101,7 +103,7 @@ const News = () => {
 									</div>
 								</div>
 
-							</a>
+							</Link>
 						</SwiperSlide>
 					))}
 				</Swiper>

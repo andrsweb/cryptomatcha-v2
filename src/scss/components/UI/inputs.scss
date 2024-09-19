@@ -1,0 +1,42 @@
+.search {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	position: relative;
+
+	input {
+		width: 100%;
+		font-size: 16px;
+
+		@media(min-width: $md) {
+			font-size: 20px;
+			width: auto;
+		}
+
+		&::placeholder {
+			font-size: 16px;
+
+			@media(min-width: $md) {
+				font-size: 20px;
+			}
+		}
+	}
+
+	.post-search-img {
+		position: absolute;
+		right: 2px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 36px;
+		height: calc(100% - 10px);
+		background-color: $white;
+		border-top-right-radius: 12px;
+		border-bottom-right-radius: 12px;
+	}
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}

@@ -1,4 +1,5 @@
 import './Title.scss'
+import { Link } from 'react-router-dom'
 
 interface TitleProps {
     h2: string
@@ -15,9 +16,9 @@ function Title({ h2, text, href, linkName }: TitleProps) {
                 <p>{text}</p>
             </div>
             {href && linkName && (
-                <a href={href} className="button">
+                <Link to={href} className="button">
                     {linkName}
-                </a>
+                </Link>
             )}
         </div>
     )
