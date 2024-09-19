@@ -1,0 +1,50 @@
+@import '../../../../scss/common/mixins.scss';
+
+.global-cards {
+	@include sectionPadding();
+
+	&-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 32px;
+	}
+
+	.global-card {
+		width: 100%;
+		box-shadow: $bs-main;
+		border-radius: $br10;
+		padding: 16px;
+
+		@media(min-width: $sm) {
+			width: calc(100% / 2 - 16px);
+		}
+
+		@media(min-width: $lg) {
+			width: calc(100% / 3 - 22px);
+			padding: 32px;
+		}
+
+		&-inner {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 16px;
+		}
+
+		&-title {
+			font-family: $ff-title;
+			font-weight: $fw-bold;
+			line-height: $lh;
+			font-size: 30px;
+			color: $green;
+
+			@media(min-width: $lg) {
+				font-size: 40px;
+			}
+		}
+
+		p {
+			@include text-sm()
+		}
+	}
+}
