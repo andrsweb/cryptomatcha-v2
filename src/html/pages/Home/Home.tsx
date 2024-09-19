@@ -5,6 +5,7 @@ import AboutUs from "../../sections/Home/AboutUs/AboutUs"
 import Coin from "../../sections/Home/Coin/Coin"
 import GlobalCards from "../../sections/Home/GlobalCards/GlobalCards"
 import News from "../../sections/Home/News/News"
+import Slides from "../../sections/Home/Slides/Slides"
 
 const Home = () => {
 	return (
@@ -15,6 +16,7 @@ const Home = () => {
 			<Coin />
 			<Collaborations />
 			<News />
+			<Slides />
 		</div>
 	)
 }

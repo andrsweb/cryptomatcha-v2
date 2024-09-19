@@ -95,7 +95,9 @@ const News = () => {
 											<h3>{post.title}</h3>
 											<p>{DOMPurify.sanitize(removeHtmlTags(post.text))}</p>
 										</div>
-										<div className="button">Read More</div>
+										<div className="read-more">
+											<div className="button">Read More <FaArrowRight /></div>
+										</div>
 									</div>
 								</div>
 
