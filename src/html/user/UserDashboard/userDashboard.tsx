@@ -1,18 +1,48 @@
+// Libs
 import { useState, useEffect, useCallback } from 'react'
-
-import { GET_WALLET_STATS } from '../../../global/queries'
-import { WalletStats, TokenData } from './types'
+import { useChain } from '@cosmos-kit/react'
+// Queries
+import { GET_WALLET_STATS, GET_TOKENS } from '../../../global/queries'
+// Functions
 import { client } from './functions'
-import { fetchTokenData } from './functions'
+// Types
+import { WalletStats, TokenData, TokensResponse } from './types'
 
 const UserDashboard = () => {
-	const { address } = useWalletStore()
+	const { address} = useChain('stargaze')
 	const [walletStats, setWalletStats] = useState<WalletStats | null>(null)
 	const [tokenData, setTokenData] = useState<{ tokens: TokenData[]; total: number }>({ tokens: [], total: 0 })
 	const [secondTokenData, setSecondTokenData] = useState<{ tokens: TokenData[]; total: number }>({ tokens: [], total: 0 })
 	const [loading, setLoading] = useState(true)
 	const [page, setPage] = useState(0)
 	const [secondPage, setSecondPage] = useState(0)
+
+	const fetchTokenData = useCallback(
+		(collectionAddr: string, page: number, setTokenData: React.Dispatch<React.SetStateAction<{ tokens: TokenData[]; total: number }>>) => {
+			client
+				.query<TokensResponse>({
+					query: GET_TOKENS,
+					variables: {
+						ownerAddrOrName: address,
+						collectionAddr: collectionAddr,
+						sortBy: 'RARITY_ASC',
+						limit: 10,
+						offset: page * 10
+					},
+				})
+				.then((response) => {
+					const tokens = response.data.tokens.tokens
+					const total = response.data.tokens.pageInfo.total
+					setTokenData({ tokens, total })
+					setLoading(false)
+				})
+				.catch((error) => {
+					console.error('Error fetching token data:', error)
+					setLoading(false)
+				})
+		},
+		[address]
+	)
 
 	useEffect(() => {
 		if (address) {
@@ -79,10 +109,12 @@ const UserDashboard = () => {
 							<p>Sell Volume (USD): <span>${walletStats.sellVolumeUsd ? walletStats.sellVolumeUsd.toFixed(0) : 'N/A'}</span></p>
 							<p>Total Volume (USD): <span>${walletStats.totalVolumeUsd ? walletStats.totalVolumeUsd.toFixed(0) : 'N/A'}</span></p>
 						</div>
+						{/* Остальная часть компонента */}
 					</div>
 				) : (
 					<p>Your wallet is as pristine as a freshly minted NFT!</p>
 				)}
+
 
 				<div className="token-images">
 					{tokenData.tokens.length > 0 ? (
@@ -104,7 +136,7 @@ const UserDashboard = () => {
 							)}
 						</>
 					) : (
-						<p>Hamsters not detected</p>
+						<p>Hamsters not detected :(</p>
 					)}
 				</div>
 
@@ -128,7 +160,7 @@ const UserDashboard = () => {
 							)}
 						</>
 					) : (
-						<p>Hamsters not detected </p>
+						<p>Hamsters not detected :(</p>
 					)}
 				</div>
 			</div>

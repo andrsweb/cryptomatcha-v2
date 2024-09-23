@@ -4,6 +4,13 @@ import 'react-toastify/dist/ReactToastify.css'
 // Libs
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ChainRegistryClient } from "@chain-registry/client"
+import { wallets as keplr } from "@cosmos-kit/keplr"
+import { wallets as leap } from "@cosmos-kit/leap"
+import { ToastContainer } from 'react-toastify'
+// Functions
+import { sessionOptions } from './html/common/Header/functions'
+import { walletConnectOptions } from './html/common/Header/functions'
 // Templates
 import MainLayout from './html/templates/MainLayout'
 // Pages
@@ -18,14 +25,9 @@ import AdminDashboard from './html/admin-area/AdminDashboard/AdminDashboard'
 // Routes
 import PrivateRoute from './routes/privateRoute'
 import AdminRoute from './routes/AdminRoute'
-import { ToastContainer } from 'react-toastify'
+// Providers
 import { ChainProvider } from "@cosmos-kit/react"
 import { ThemeProvider } from "@interchain-ui/react"
-import { ChainRegistryClient } from "@chain-registry/client"
-import { wallets as keplr } from "@cosmos-kit/keplr"
-import { wallets as leap } from "@cosmos-kit/leap"
-import { sessionOptions } from './html/common/Header/functions'
-import { walletConnectOptions } from './html/common/Header/functions'
 
 const App = () => {
 	const client = new ChainRegistryClient({
@@ -76,16 +78,16 @@ const App = () => {
 				customTheme="custom"
 			>
 				<Router>
-					<ToastContainer autoClose={1000}/>
+					<ToastContainer autoClose={1000} />
 					<Routes>
 						<Route path="/" element={<MainLayout />}>
 							<Route index element={<Home />} />
 							<Route path='/news' element={<NewsPage />} />
 							<Route path='/news/:category/:slug' element={<NewsSingle />} />
-							{/* <Route path="/apps" element={<Apps />} /> */}
-							{/* <Route element={<PrivateRoute />}> */}
-								{/* <Route path="/user-dashboard" element={<UserDashboard />} /> */}
-							{/* </Route> */}
+							<Route path="/apps" element={<Apps />} />
+							<Route element={<PrivateRoute />}>
+								<Route path="/user-dashboard" element={<UserDashboard />} />
+							</Route>
 						</Route>
 						<Route path="/admin/login" element={<Login />} />
 						<Route

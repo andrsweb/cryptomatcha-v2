@@ -1,15 +1,17 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom'
+import useStore from '../store/store'
 
 const PrivateRoute = () => {
-	const storedAccounts = localStorage.getItem('cosmos-kit@2:core//accounts')
-	const parsedAccounts = storedAccounts ? JSON.parse(storedAccounts) : []
-	const address = parsedAccounts.length > 0 ? parsedAccounts[0].address : ''
+  const { address, status } = useStore((state) => ({
+    address: state.address,
+    status: state.status,
+  }))
 
-  if (!address) {
-    return <Navigate to="/" />;
+  if (status !== 'Connected' || !address) {
+    return <Navigate to="/" />
   }
 
-  return <Outlet />;
-};
+  return <Outlet /> 
+}
 
-export default PrivateRoute;
+export default PrivateRoute

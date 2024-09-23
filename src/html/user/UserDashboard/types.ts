@@ -29,9 +29,12 @@ export interface PageInfo {
 	total: number
 }
 
-export interface TokensResponse {
+
+export type TokensResponse = {
 	tokens: {
 		tokens: TokenData[]
-		pageInfo: PageInfo
+		pageInfo: {
+			total: number
+		}
 	}
 }

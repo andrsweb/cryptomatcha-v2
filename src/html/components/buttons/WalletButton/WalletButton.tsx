@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom'
 import { RPC_ENDPOINT } from "../../../../global/constants"
 // Functions
 import { formatAddress } from "../../../common/Header/functions"
+// Store
+import useStore from '../../../../store/store'
 // Icons
 import { FaCopy } from "react-icons/fa"
 import { FaRegUser } from "react-icons/fa"
@@ -21,6 +23,20 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
     const [isFetchingBalance, setFetchingBalance] = useState<boolean>(false)
     const [isConnecting, setIsConnecting] = useState<boolean>(false)
 
+    const { setAddress, setStatus } = useStore() 
+
+    useEffect(() => {
+        const storedAddress = sessionStorage.getItem('address')
+        const storedStatus = sessionStorage.getItem('status') as 'Connected' | 'Disconnected' | null
+
+        if (storedAddress) {
+            setAddress(storedAddress)
+        }
+        if (storedStatus) {
+            setStatus(storedStatus)
+        }
+    }, [setAddress, setStatus])
+
     const handleConnect = async () => {
         if (!isWalletConnected) {
             setIsConnecting(true)
@@ -28,6 +44,10 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
                 await connect()
                 if (address) {
                     fetchBalance()
+                    setAddress(address) 
+                    setStatus('Connected')
+                    sessionStorage.setItem('address', address)
+                    sessionStorage.setItem('status', 'Connected')
                 }
             } catch (error) {
                 console.error("Connection error:", error)
@@ -44,9 +64,7 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
 
         try {
             const client = await SigningStargateClient.connect(RPC_ENDPOINT)
-
             const balances = await client.getAllBalances(address)
-
             const starBalance = balances.find(c => c.denom === "ustars")
 
             if (starBalance) {
@@ -66,8 +84,12 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
     useEffect(() => {
         if (isWalletConnected && address) {
             fetchBalance()
+            setAddress(address) 
+            setStatus('Connected') 
+            sessionStorage.setItem('address', address)
+            sessionStorage.setItem('status', 'Connected')
         }
-    }, [isWalletConnected, address])
+    }, [isWalletConnected, address, setAddress, setStatus])
 
     const copyAddressToClipboard = async () => {
         if (address) {
@@ -92,13 +114,21 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
                         <div className="balance-wrapper">
                             {isFetchingBalance ? (
                                 <div className='loader'></div>
-                            ): (
+                            ) : (
                                 <div className='balance'>{balance.toFixed(2)} stars</div>
                             )}
                         </div>
                     </div>
                     
-                    <button className='disconnect-button' onClick={() => disconnect()}> <span>Disconnect</span><RiLogoutBoxRLine /></button>
+                    <button className='disconnect-button' onClick={() => {
+                        disconnect()
+                        setAddress(null) 
+                        setStatus('Disconnected')
+                        sessionStorage.removeItem('address')
+                        sessionStorage.removeItem('status')
+                    }}>
+                        <span>Disconnect</span><RiLogoutBoxRLine />
+                    </button>
                     {address && (
                         <Link to="/user-dashboard" className="user-button">
                             <FaRegUser />
