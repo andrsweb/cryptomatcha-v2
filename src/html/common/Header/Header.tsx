@@ -1,27 +1,21 @@
-// Styles
 import './Header.scss'
 import "@interchain-ui/react/styles"
-// Libs
 import { useState, useEffect, useRef } from "react"
 import { ChainRegistryClient } from "@chain-registry/client"
 import { Link } from 'react-router-dom'
-// Functions
 import { toggleBodyScroll } from '../../../global/functions'
-// Components
 import WalletButton from "../../components/buttons/WalletButton/WalletButton"
 import HeaderLogo from './HeaderLogo'
 import NavLeft from '../Nav/HeaderNav/NavLeft'
 import NavRight from '../Nav/HeaderNav/NavRight'
 import BorderLink from "../../components/Links/BorderLink"
-// Constants
 import { WINDOW_INNER_WIDTH_XL } from "../../../global/constants"
-// Icons/images
 import { FaBars, FaTimes } from "react-icons/fa"
 import logo from '../../../assets/svg/logos/header-logo.svg'
 
-
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false)
+	const [isScrolled, setIsScrolled] = useState(false)
 	const client = new ChainRegistryClient({
 		chainNames: ['stargaze'],
 	})
@@ -29,6 +23,23 @@ const Header = () => {
 	const [chains, setChains] = useState<any[]>([])
 	const [assets, setAssets] = useState<any[]>([])
 	const mobileMenuRef = useRef<HTMLDivElement>(null)
+
+	// Handle scroll to add class when scrolled
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY > 0) {
+				setIsScrolled(true)
+			} else {
+				setIsScrolled(false)
+			}
+		}
+
+		window.addEventListener('scroll', handleScroll)
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	}, [])
 
 	useEffect(() => {
 		(async () => {
@@ -74,7 +85,7 @@ const Header = () => {
 	}
 
 	return (
-		<header className="header">
+		<header className={`header ${isScrolled ? 'scrolled' : ''}`}>
 			<div className="container">
 				<div className="header-wrapper">
 					<div className="header-left">

@@ -1,6 +1,9 @@
 @import '../../../../scss/common/mixins.scss';
 
 .news {
+	clip-path: polygon(0 0, 100% 1%, 100% 100%, 0 100%); 
+	transform: perspective(1000px) rotateX(-1deg); 
+	background-color: $white-ghost;
 	@include sectionPadding();
 
 	.swiper-wrapper {

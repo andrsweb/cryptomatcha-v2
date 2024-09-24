@@ -1,8 +1,14 @@
 @import '../../../../scss/common/mixins.scss';
 
 .coin {
-	background-color: $white;
+	background-color: $l-green;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 94%); 
+	box-shadow: $bs-main;
 	@include sectionPadding();
+
+	h2 {
+		color: $white-ghost;
+	}
 
 	&-wrapper {
 		display: flex;
@@ -29,8 +35,11 @@
 		}
 
 		p {
-			color: $black-rich;
 			@include text-main();
+
+			& {
+				color: $white;
+			}
 		}
 	}
 

@@ -1,10 +1,8 @@
-// Libs
 import { Suspense, useRef, useEffect, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Environment } from '@react-three/drei'
+import { WINDOW_INNER_WIDTH_XXL, WINDOW_INNER_WIDTH_MD } from '../../../../global/constants'
 import * as THREE from 'three'
-// Constants
-import { WINDOW_INNER_WIDTH_MD, WINDOW_INNER_WIDTH_XL, WINDOW_INNER_WIDTH_XXL } from '../../../../global/constants'
 
 export interface RotatingMeshProps {
 	scene: THREE.Group
@@ -12,48 +10,36 @@ export interface RotatingMeshProps {
 
 const RotatingMesh = ({ scene }: RotatingMeshProps) => {
 	const meshRef = useRef<THREE.Group>(null)
-	const [scale, setScale] = useState([1.5, 1.5, 1.5])
-	const [rotationSpeeds] = useState({
-		y: Math.random() * 0.1 + 0.2,
-	})
-	const [swayAmplitude] = useState(0.1)
-	const [swaySpeed] = useState(1)
-	const { invalidate } = useThree()
+	const [scale, setScale] = useState([1.3, 1.3, 1.3])
+	const rotationSpeed = useRef(0.06)
+	const swayAmplitude = 0.1
+	const swaySpeed = 1
 
 	const updateScale = () => {
 		const width = window.innerWidth
-		switch (true) {
-			case width < WINDOW_INNER_WIDTH_MD:
-				setScale([1.5, 1.5, 1.5])
-				break
-			case width < WINDOW_INNER_WIDTH_XL:
-				setScale([1.2, 1.2, 1.2])
-				break
-			case width < WINDOW_INNER_WIDTH_XXL:
-				setScale([1.4, 1.4, 1.4])
-				break
-			default:
-				setScale([1.5, 1.5, 1.5])
+		if (width < WINDOW_INNER_WIDTH_MD) {
+			setScale([1.5, 1.5, 1.5])
+		} else if (width < WINDOW_INNER_WIDTH_XXL) {
+			setScale([1.1, 1.1, 1.1])
+		} else {
+			setScale([1.2, 1.2, 1.2])
 		}
-		invalidate()
 	}
 
 	useEffect(() => {
 		updateScale()
-
-		window.addEventListener('resize', updateScale)
-		window.addEventListener('orientationchange', updateScale)
+		const handleResize = () => updateScale()
+		window.addEventListener('resize', handleResize)
 
 		return () => {
-			window.removeEventListener('resize', updateScale)
-			window.removeEventListener('orientationchange', updateScale)
+			window.removeEventListener('resize', handleResize)
 		}
 	}, [])
 
-	useFrame(({ clock }) => {
+	useFrame(({ clock }, delta) => {
 		if (meshRef.current) {
 			const elapsedTime = clock.getElapsedTime()
-			meshRef.current.rotation.y = elapsedTime * rotationSpeeds.y
+			meshRef.current.rotation.y += rotationSpeed.current * delta
 			meshRef.current.position.y = Math.sin(elapsedTime * swaySpeed) * swayAmplitude
 		}
 	})
@@ -82,16 +68,16 @@ const Logo3D = () => {
 
 	return (
 		<Canvas className='canvas'>
-			<ambientLight intensity={0.8} />
+			<ambientLight intensity={0.5} />
 			<directionalLight
 				ref={lightRef}
 				position={[10, 10, 10]}
-				intensity={1.2}
-				castShadow
+				intensity={0.7}
+				castShadow={false}
 			/>
 			<pointLight
-				position={[2, 2, 2]}
-				intensity={1.8}
+				position={[1.5, 2, 1]}
+				intensity={1}
 				distance={20}
 				decay={1}
 				color="#ffffff"

@@ -4,9 +4,27 @@
 	left: 0;
 	top: 0;
 	padding: 10px 0;
-	background-color: $white;
+	background-color: transparent;
+	backdrop-filter: blur(0);
 	z-index: 100;
-	box-shadow: $bs-active;
+	transition: background-color ease $tr,
+				backdrop-filter ease-in $tr,
+				box-shadow ease $tr,
+				padding ease $tr;
+
+	&.scrolled {
+		padding: 15px 0;
+		background-color: #ffffff85;
+		backdrop-filter: blur(15px);
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+
+		@media(min-width: $xl) {
+			.header-logo img {
+				top: -30px;
+			}
+		}
+	}
 
 	@media(min-width: $xl) {
 		padding: 20px 0;
@@ -79,6 +97,7 @@
 			height: 100%;
 			box-shadow: $bs-main;
 			border-radius: 50%;
+			transition: top ease $tr;
 
 			@media(min-width: $xl) {
 				position: absolute;

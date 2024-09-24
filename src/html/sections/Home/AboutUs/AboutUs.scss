@@ -1,11 +1,17 @@
 @import '../../../../scss/common/mixins.scss';
 
 .about-us {
-	background-color: $white;
+	clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%); 
+	background-color: $l-green;
 	@include sectionPadding();
 
+	@media(min-width: $md) {
+		clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%); 
+	}
+
+
 	h2 {
-		color: $black-rich;
+		color: $white-ghost;
 	}
 
 	&-wrapper {
@@ -42,9 +48,14 @@
 		p {
 			color: $white;
 			@include text-main();
+
+			& {
+				color: $white;
+			}
 		}
 
 		a {
+			background-color: $white;
 			color: $black-rich;
 		}
 	}

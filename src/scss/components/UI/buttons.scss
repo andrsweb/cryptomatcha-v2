@@ -1,5 +1,6 @@
 @import '../../common/mixins.scss';
 
 .button {
+	background-color: $white;
 	@include button();
 }

@@ -11,6 +11,7 @@
 	color: $black-rich;
 	font-size: 16px;
 	box-shadow:  $bs-main;
+	background-color: $white;
 	transition: box-shadow ease $tr;
 
 	@media(min-width: $md) {

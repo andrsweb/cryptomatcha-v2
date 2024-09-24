@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { UserListProps } from '../Types'
+import { UserListProps } from '../types'
 import './UserList.scss'
 import { FaArrowUp, FaArrowDown } from "react-icons/fa"
 
