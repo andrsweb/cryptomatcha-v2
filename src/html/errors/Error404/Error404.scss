@@ -1,0 +1,167 @@
+.not-found-container {
+	width: 100vw;
+	height: 100dvh;
+	background-color: $black-rich;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+	padding: 20px;
+
+	@media (min-width: 600px) {
+		padding: 40px;
+	}
+
+	&-inner {
+		z-index: 1;
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+		gap: 24px;
+
+		@media(min-width: $xl) {
+			flex-direction: row;
+		}
+	}
+
+	&-info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&-title {
+		font-family: $ff-title;
+		font-weight: $fw-bold;
+		color: $white-ghost;
+		font-size: 80px;
+		text-align: center;
+		margin-bottom: 60px;
+
+		@media (min-width: $lg) {
+			font-size: 120px;
+		}
+	}
+
+	p {
+		font-family: $ff-h1;
+		font-weight: $fw-bold;
+		color: $white;
+		font-size: 24px;
+
+		@media (min-width: $lg) {
+			font-size: 30px;
+		}
+	}
+
+	p {
+		text-align: center;
+		margin-bottom: 24px;
+	}
+
+	&-img {
+		position: relative;
+		animation: float 3s ease-in-out infinite;
+
+		img {
+			width: 300px;
+
+			@media (min-width: 600px) {
+				width: 450px;
+			}
+		}
+	}
+
+	a {
+		position: absolute;
+		left: -20px;
+		top: -105px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60px;
+		height: 20px;
+		position: relative;
+		background-color: red;
+		color: $white-ghost;
+		font-size: 1rem;
+		border-radius: 30px;
+		text-decoration: none;
+		transform: rotate(5deg);
+		transition: background-color 0.3s ease, transform 0.3s ease;
+		box-shadow:
+			0 4px 0 darken(red, 15%),
+			inset 0 -4px 10px rgba(0, 0, 0, 0.2);
+
+		@media (min-width: 600px) {
+			width: 80px;
+			height: 30px;
+			font-size: 1.5rem;
+			left: -20px;
+			top: -175px;
+		}
+
+		&:hover {
+			background-color: lighten(red, 10%);
+			transform: translateY(-4px);
+			box-shadow:
+				0 6px 0 darken(red, 20%),
+				inset 0 -6px 12px rgba(0, 0, 0, 0.3);
+		}
+
+		&:active {
+			transform: translateY(2px);
+			box-shadow:
+				0 2px 0 darken($l-green, 10%),
+				inset 0 -2px 8px rgba(0, 0, 0, 0.2);
+		}
+	}
+
+	.matrix {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		color: $l-green;
+		font-family: $ff-h1;
+		font-weight: $fw-bold;
+		overflow: hidden;
+		z-index: 0;
+
+		span {
+			position: absolute;
+			bottom: 100%;
+			font-size: 1.5rem;
+			animation: drop 5s infinite linear, fade-in-out 5s infinite ease-in-out;
+		}
+	}
+
+	@keyframes drop {
+		0% {
+			transform: translateY(0);
+		}
+		100% {
+			transform: translateY(100vh);
+		}
+	}
+
+	@keyframes fade-in-out {
+		0%, 100% {
+			opacity: 0;
+		}
+		10%, 90% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+}

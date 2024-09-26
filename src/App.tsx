@@ -19,6 +19,8 @@ import NewsPage from './html/pages/News/NewsPage'
 import NewsSingle from './html/templates/SingleNews/NewsSingle/NewsSingle'
 import Apps from './html/pages/Apps/Apps'
 import UserDashboard from './html/user/UserDashboard/userDashboard'
+import StargazeError from './html/errors/StargazeError/StargazeError'
+import Error404 from './html/errors/Error404/Error404'
 // Admin-area
 import Login from './html/admin-area/auth/Login/Login'
 import AdminDashboard from './html/admin-area/AdminDashboard/AdminDashboard'
@@ -29,6 +31,7 @@ import AdminRoute from './routes/AdminRoute'
 import { ChainProvider } from "@cosmos-kit/react"
 import { ThemeProvider } from "@interchain-ui/react"
 
+
 const App = () => {
 	const client = new ChainRegistryClient({
 		chainNames: ['stargaze'],
@@ -36,20 +39,35 @@ const App = () => {
 
 	const [chains, setChains] = useState<any[]>([])
 	const [assets, setAssets] = useState<any[]>([])
+	const [error, setError] = useState<string | null>(null)
 
 	useEffect(() => {
 		(async () => {
-			await client.fetchUrls()
-			const chainData = client.getChain('stargaze')
-			const assetListData = client.getChainAssetList('stargaze')
+			try {
+				await client.fetchUrls()
+				const chainData = client.getChain('stargaze')
+				const assetListData = client.getChainAssetList('stargaze')
 
-			setChains([chainData])
-			setAssets([assetListData])
+				if (chainData && assetListData) {
+					setChains([chainData])
+					setAssets([assetListData])
+				} else {
+					setError("Chain data or asset list data is not available.")
+					console.error("Chain data or asset list data is not available.")
+				}
+			} catch (error) {
+				console.error("Error fetching chains or assets:", error)
+				setError("Error loading chain data.")
+			}
 		})()
 	}, [client])
 
+	if (error) {
+		return <StargazeError message={error} />
+	}
+
 	if (chains.length === 0 || assets.length === 0) {
-		return <div>Loading...</div>
+		return null
 	}
 
 	return (
@@ -98,6 +116,7 @@ const App = () => {
 								</AdminRoute>
 							}
 						/>
+						<Route path="*" element={<Error404 />} />
 					</Routes>
 				</Router>
 			</ThemeProvider>

@@ -1,0 +1,62 @@
+.error-container {
+	width: 100vw;
+	height: 100vh;
+	padding: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $black-rich;
+
+	&-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 24px;
+
+		@media(min-width: $lg) {
+			flex-direction: row;
+		}
+	}
+
+	&-info {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 24px;
+
+		@media(min-width: $lg) {
+			width: 60%;
+		}
+	}
+
+	.error-title {
+		font-family: $ff-title;
+		font-weight: $fw-bold;
+		color: $white-ghost;
+		font-size: 40px;
+
+		@media(min-width: $lg) {
+			font-size: 60px;
+		}
+	}
+
+	p {
+		font-family: $ff;
+		font-weight: $fw-medium;
+		color: $white;
+		font-size: 18px;
+
+		@media(min-width: $lg) {
+			font-size: 24px;
+		}
+	}
+
+	img {
+		width: 80%;
+
+		@media(min-width: $lg) {
+			width: 40%;
+		}
+	}
+}

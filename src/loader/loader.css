@@ -1,0 +1,70 @@
+.main-loader {
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    z-index: 100;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.loader-animation {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.circle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #0B6D44;
+    animation: move 3s infinite linear;
+}
+
+.circle.circle-1 {
+    background-color: rgba(11, 109, 68, 0.8);
+    animation-delay: 0s;
+    left: 0;
+    top: 0;
+}
+
+.circle.circle-2 {
+    background-color: rgba(8, 151, 91, 0.8);
+    animation-delay: 1s;
+    left: 70%;
+    top: 20%;
+}
+
+.circle.circle-3 {
+    background-color: rgba(11, 109, 68, 0.6);
+    animation-delay: 2s;
+    left: 30%;
+    top: 60%;
+}
+
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes move {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(50px, -40px) scale(1.2) rotate(15deg);
+    }
+    50% {
+        transform: translate(-40px, 40px) scale(0.8) rotate(-15deg);
+    }
+    75% {
+        transform: translate(30px, 20px) scale(1.1) rotate(10deg);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}

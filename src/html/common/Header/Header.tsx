@@ -24,14 +24,9 @@ const Header = () => {
 	const [assets, setAssets] = useState<any[]>([])
 	const mobileMenuRef = useRef<HTMLDivElement>(null)
 
-	// Handle scroll to add class when scrolled
 	useEffect(() => {
 		const handleScroll = () => {
-			if (window.scrollY > 0) {
-				setIsScrolled(true)
-			} else {
-				setIsScrolled(false)
-			}
+			setIsScrolled(window.scrollY > 0)
 		}
 
 		window.addEventListener('scroll', handleScroll)
@@ -65,20 +60,12 @@ const Header = () => {
 	}, [])
 
 	useEffect(() => {
-		if (menuOpen) {
-			toggleBodyScroll(true)
-		} else {
-			toggleBodyScroll(false)
-		}
+		toggleBodyScroll(menuOpen)
 
 		return () => {
 			toggleBodyScroll(false)
 		}
 	}, [menuOpen])
-
-	if (chains.length === 0 || assets.length === 0) {
-		return <div>Loading...</div>
-	}
 
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen)
