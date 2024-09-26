@@ -1,10 +1,12 @@
 import './AboutUs.scss'
 import img from '../../../../assets/img/home/about-us/about-sticker.png'
+import cat from '../../../../assets/svg/cats/black-cat.svg'
 import { Link } from 'react-router-dom'
 
 const AboutUs = () => {
 	return (
 		<section className='about-us'>
+			<img className='black-cat' src={cat} alt="" />
 			<div className="container">
 				<div className="about-us-wrapper">
 					<div className="about-us-left">

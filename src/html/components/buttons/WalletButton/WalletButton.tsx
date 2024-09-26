@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom'
 import { RPC_ENDPOINT } from "../../../../global/constants"
 // Functions
 import { formatAddress } from "../../../common/Header/functions"
+// Components
+import Spinner from '../../spinners/Spinner'
 // Store
 import useStore from '../../../../store/store'
 // Icons
@@ -20,10 +22,10 @@ import { RiLogoutBoxRLine } from "react-icons/ri"
 const WalletButton = ({ chainName }: { chainName: string }) => {
     const { connect, isWalletConnected, address, disconnect } = useChain(chainName)
     const [balance, setBalance] = useState<number>(0)
-    const [isFetchingBalance, setFetchingBalance] = useState<boolean>(false)
+    const [isFetchingBalance, setFetchingBalance] = useState<boolean>(true)
     const [isConnecting, setIsConnecting] = useState<boolean>(false)
 
-    const { setAddress, setStatus } = useStore() 
+    const { setAddress, setStatus } = useStore()
 
     useEffect(() => {
         const storedAddress = sessionStorage.getItem('address')
@@ -43,8 +45,8 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
             try {
                 await connect()
                 if (address) {
-                    fetchBalance()
-                    setAddress(address) 
+                    await fetchBalance()
+                    setAddress(address)
                     setStatus('Connected')
                     sessionStorage.setItem('address', address)
                     sessionStorage.setItem('status', 'Connected')
@@ -83,11 +85,13 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
 
     useEffect(() => {
         if (isWalletConnected && address) {
-            fetchBalance()
-            setAddress(address) 
-            setStatus('Connected') 
+            fetchBalance().then(() => setFetchingBalance(false))
+            setAddress(address)
+            setStatus('Connected')
             sessionStorage.setItem('address', address)
             sessionStorage.setItem('status', 'Connected')
+        } else {
+            setFetchingBalance(false)
         }
     }, [isWalletConnected, address, setAddress, setStatus])
 
@@ -105,24 +109,25 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
 
     return (
         <div className='wallet-button-wrapper'>
-            {isWalletConnected ? (
+            {(isFetchingBalance || isConnecting) ? (
+                <button className='wallet-button' disabled>
+                    <Spinner />
+                    <span>Connecting...</span>
+                </button>
+            ) : isWalletConnected ? (
                 <div className="wallet-button-inner">
                     <div className="wallet-button-info">
                         <div className="address" onClick={copyAddressToClipboard}>
                             {address ? formatAddress(address) : "Error fetch address"} <FaCopy />
                         </div>
                         <div className="balance-wrapper">
-                            {isFetchingBalance ? (
-                                <div className='loader'></div>
-                            ) : (
-                                <div className='balance'>{balance.toFixed(2)} stars</div>
-                            )}
+                            <div className='balance'>{balance.toFixed(2)} stars</div>
                         </div>
                     </div>
                     
                     <button className='disconnect-button' onClick={() => {
                         disconnect()
-                        setAddress(null) 
+                        setAddress(null)
                         setStatus('Disconnected')
                         sessionStorage.removeItem('address')
                         sessionStorage.removeItem('status')
@@ -137,7 +142,7 @@ const WalletButton = ({ chainName }: { chainName: string }) => {
                 </div>
             ) : (
                 <button className='wallet-button' onClick={handleConnect} disabled={isConnecting}>
-                    {isConnecting ? 'Loading...' : 'Connect Wallet'}
+                    <span>Connect Wallet</span>
                 </button>
             )}
         </div>

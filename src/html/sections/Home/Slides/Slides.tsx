@@ -51,7 +51,7 @@ const Slides = () => {
 							},
 
 							1366: {
-								slidesPerView: 4,
+								slidesPerView: 5,
 								spaceBetween: 20
 							}
 						}}

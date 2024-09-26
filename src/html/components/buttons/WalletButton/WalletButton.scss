@@ -48,6 +48,8 @@
 }
 
 .wallet-button {
+	display: flex;
+	align-items: center;
 	background-color: $white;
 	color: $black-rich;
 	gap: 10px;

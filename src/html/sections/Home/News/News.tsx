@@ -18,6 +18,7 @@ import './News.scss'
 import { Post } from './types'
 // Images
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'
+import paws from '../../../../assets/svg/cats/cat-paws.svg'
 
 
 const News = () => {
@@ -38,6 +39,7 @@ const News = () => {
 
 	return (
 		<section className='news'>
+			<img className='paws' src={paws} alt="" />
 			<div className='container'>
 				<Title
 					h2='LATEST NEWS'

@@ -1,7 +1,30 @@
 @import '../../../../scss/common/mixins.scss';
 
 .collaborations {
+	position: relative;
 	@include sectionPadding();
+
+	.cat-watching {
+		position: absolute;
+		top: -76px;
+		left: 0;
+		width: 100px;
+		z-index: 1;
+		pointer-events: all;
+
+		@media (min-width: $md) {
+			top: auto;
+			left: auto;
+			right: 0;
+			width: 150px;
+			bottom: -26px;
+		}
+
+		@media (min-width: 1750px) {
+			width: 200px;
+			bottom: -34px;
+		}
+	}
 
 	h2 {
 		margin-bottom: 30px;

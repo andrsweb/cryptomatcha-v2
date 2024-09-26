@@ -1,12 +1,15 @@
 import './Coin.scss'
 import Logo3D from './Logo3d'
+import candles from '../../../../assets/img/home/coin/matcha-coin.png'
 
 const Coin = () => {
 	return (
 		<section className='coin'>
 			<div className="container">
 				<div className="coin-wrapper">
+			
 					<div className="coin-info">
+						
 						<h2>
 							Grow With Us
 						</h2>
@@ -24,6 +27,7 @@ const Coin = () => {
 					</div>
 				</div>
 			</div>
+			<img className='candles' src={candles} alt="" />
 		</section>
 	)
 }

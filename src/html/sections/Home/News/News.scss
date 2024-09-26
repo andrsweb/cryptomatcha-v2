@@ -4,7 +4,15 @@
 	clip-path: polygon(0 0, 100% 1%, 100% 100%, 0 100%); 
 	transform: perspective(1000px) rotateX(-1deg); 
 	background-color: $white-ghost;
+	position: relative;
 	@include sectionPadding();
+
+	.paws {
+		position: absolute;
+		left: 5%;
+		bottom: 0;
+	}
+
 
 	.swiper-wrapper {
 		padding: 16px 0;

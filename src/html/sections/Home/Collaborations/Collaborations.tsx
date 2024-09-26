@@ -12,6 +12,7 @@ import shitmos from "../../../../assets/img/home/collaborations/shitmos.jpg"
 import smokers from "../../../../assets/img/home/collaborations/smokers.jpeg"
 import shade from "../../../../assets/img/home/collaborations/shade.jpg"
 import bigCat from '../../../../assets/svg/cats/big-orange-cat.svg'
+import blackCat from '../../../../assets/svg/cats/black-cat-w.svg'
 
 const Collaborations = () => {
     const [showModal, setShowModal] = useState<boolean>(false)
@@ -60,6 +61,7 @@ const Collaborations = () => {
 
     return (
         <section className="collaborations">
+			<img className='cat-watching' src={blackCat} alt="" />
             <div className="container">
                 <h2>
                     Collaborations
