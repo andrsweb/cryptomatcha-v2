@@ -1,19 +1,22 @@
+
+// Libs
 import { Suspense, useRef, useEffect, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, Environment } from '@react-three/drei'
-import { WINDOW_INNER_WIDTH_XXL, WINDOW_INNER_WIDTH_MD } from '../../../../global/constants'
 import * as THREE from 'three'
+import { useGLTF, Environment } from '@react-three/drei'
+// Constants
+import { WINDOW_INNER_WIDTH_XXL, WINDOW_INNER_WIDTH_MD } from '../../../../global/constants'
 
 export interface RotatingMeshProps {
 	scene: THREE.Group
+	scrollY: number
+	isScrolling: boolean
 }
 
-const RotatingMesh = ({ scene }: RotatingMeshProps) => {
+const RotatingMesh = ({ scene, scrollY, isScrolling }: RotatingMeshProps) => {
 	const meshRef = useRef<THREE.Group>(null)
 	const [scale, setScale] = useState([1.3, 1.3, 1.3])
-	const rotationSpeed = useRef(0.25)
-	const swayAmplitude = 0.1
-	const swaySpeed = 2.2
+	const [rotationSpeed, setRotationSpeed] = useState(0)
 
 	const updateScale = () => {
 		const width = window.innerWidth
@@ -36,25 +39,30 @@ const RotatingMesh = ({ scene }: RotatingMeshProps) => {
 		}
 	}, [])
 
-	useFrame(({ clock }, delta) => {
+	useFrame(() => {
 		if (meshRef.current) {
-			const elapsedTime = clock.getElapsedTime()
-			meshRef.current.rotation.y += rotationSpeed.current * delta 
-			meshRef.current.position.y = Math.sin(elapsedTime * swaySpeed) * swayAmplitude
+			meshRef.current.rotation.y += rotationSpeed
+
+
+			if (!isScrolling) {
+				setRotationSpeed((prevSpeed) => Math.max(prevSpeed - 0.001, 0))
+			} else {
+				setRotationSpeed(0.04)
+			}
 		}
 	})
 
 	useEffect(() => {
 		scene.traverse((child) => {
-		  if (child instanceof THREE.Mesh) {
-			child.material = new THREE.MeshStandardMaterial({
-			  metalness: 1, 
-			  roughness: 0.2,
-			  color: child.material.color
-			})
-		  }
+			if (child instanceof THREE.Mesh) {
+				child.material = new THREE.MeshStandardMaterial({
+					metalness: 1,
+					roughness: 0.2,
+					color: child.material.color,
+				})
+			}
 		})
-	  }, [])
+	}, [scene])
 
 	return (
 		<primitive
@@ -67,7 +75,12 @@ const RotatingMesh = ({ scene }: RotatingMeshProps) => {
 	)
 }
 
-const Logo3D = () => {
+interface Logo3DProps {
+	scrollY: number
+	isScrolling: boolean
+}
+
+const Logo3D = ({ scrollY, isScrolling }: Logo3DProps) => {
 	const { scene } = useGLTF('/models/logo3d.glb')
 	const lightRef = useRef<THREE.DirectionalLight>(null)
 
@@ -81,14 +94,14 @@ const Logo3D = () => {
 	return (
 		<Canvas className='canvas'>
 			<Environment preset="forest" />
-			<RotatingMesh scene={scene as THREE.Group} />
+			<RotatingMesh scene={scene as THREE.Group} scrollY={scrollY} isScrolling={isScrolling} />
 		</Canvas>
 	)
 }
 
-const Logo3DWithSuspense = () => (
+const Logo3DWithSuspense = ({ scrollY, isScrolling }: Logo3DProps) => (
 	<Suspense fallback={<div>Loading...</div>}>
-		<Logo3D />
+		<Logo3D scrollY={scrollY} isScrolling={isScrolling} />
 	</Suspense>
 )
 
