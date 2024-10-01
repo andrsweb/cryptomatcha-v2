@@ -19,6 +19,8 @@ import Apps from './html/pages/Apps/Apps'
 import UserDashboard from './html/user/UserDashboard/userDashboard'
 import StargazeError from './html/errors/StargazeError/StargazeError'
 import Error404 from './html/errors/Error404/Error404'
+// Components
+import ScrollToTop from './html/components/scrollTop/ScrollTop'
 // Admin-area
 import Login from './html/admin-area/auth/Login/Login'
 import AdminDashboard from './html/admin-area/AdminDashboard/AdminDashboard'
@@ -59,6 +61,7 @@ const App = () => {
         <ThemeProvider>
             <Router>
                 <ToastContainer autoClose={1000} />
+				<ScrollToTop />
                 <Routes>
                     <Route path="/admin/login" element={<Login />} />
                     <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
