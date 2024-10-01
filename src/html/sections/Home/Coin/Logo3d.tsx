@@ -45,7 +45,7 @@ const RotatingMesh = ({ scene, scrollY, isScrolling }: RotatingMeshProps) => {
 
 
 			if (!isScrolling) {
-				setRotationSpeed((prevSpeed) => Math.max(prevSpeed - 0.001, 0))
+				setRotationSpeed((prevSpeed) => Math.max(prevSpeed - 0.0005, 0))
 			} else {
 				setRotationSpeed(0.04)
 			}
