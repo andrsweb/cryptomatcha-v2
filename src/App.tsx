@@ -2,12 +2,10 @@
 import './scss/main.scss'
 import 'react-toastify/dist/ReactToastify.css'
 // Libs
-import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { ChainRegistryClient } from "@chain-registry/client"
-import { wallets as keplr } from "@cosmos-kit/keplr"
-import { wallets as leap } from "@cosmos-kit/leap"
 import { ToastContainer } from 'react-toastify'
+import { wallets as keplr } from "@cosmos-kit/keplr"
+import { wallets as leap } from "@cosmos-kit/leap" 
 // Functions
 import { sessionOptions } from './html/common/Header/functions'
 import { walletConnectOptions } from './html/common/Header/functions'
@@ -30,37 +28,10 @@ import AdminRoute from './routes/AdminRoute'
 // Providers
 import { ChainProvider } from "@cosmos-kit/react"
 import { ThemeProvider } from "@interchain-ui/react"
-
+import useChainData from './hooks/useChainData'
 
 const BlockchainProvider = ({ children }: { children: React.ReactNode }) => {
-    const client = new ChainRegistryClient({
-        chainNames: ['stargaze'],
-    })
-
-    const [chains, setChains] = useState<any[]>([])
-    const [assets, setAssets] = useState<any[]>([])
-    const [error, setError] = useState<string | null>(null)
-
-    useEffect(() => {
-        (async () => {
-            try {
-                await client.fetchUrls()
-                const chainData = client.getChain('stargaze')
-                const assetListData = client.getChainAssetList('stargaze')
-
-                if (chainData && assetListData) {
-                    setChains([chainData])
-                    setAssets([assetListData])
-                } else {
-                    setError("Chain data or asset list data is not available.")
-                    console.error("Chain data or asset list data is not available.")
-                }
-            } catch (error) {
-                console.error("Error fetching chains or assets:", error)
-                setError("Error loading chain data.")
-            }
-        })()
-    }, [client])
+    const { chains, assets, error } = useChainData(['stargaze'])
 
     if (error) {
         return <StargazeError message={error} />
@@ -92,7 +63,7 @@ const App = () => {
                     <Route path="/admin/login" element={<Login />} />
                     <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
                     <Route path="*" element={<Error404 />} />
-
+                    
                     <Route path="/" element={<BlockchainProvider><MainLayout /></BlockchainProvider>}>
                         <Route index element={<Home />} />
                         <Route path="/news" element={<NewsPage />} />

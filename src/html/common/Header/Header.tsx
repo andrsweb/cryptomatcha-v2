@@ -1,7 +1,6 @@
 import './Header.scss'
 import "@interchain-ui/react/styles"
 import { useState, useEffect, useRef } from "react"
-import { ChainRegistryClient } from "@chain-registry/client"
 import { Link } from 'react-router-dom'
 import { toggleBodyScroll } from '../../../global/functions'
 import WalletButton from "../../components/buttons/WalletButton/WalletButton"
@@ -12,17 +11,14 @@ import BorderLink from "../../components/Links/BorderLink"
 import { WINDOW_INNER_WIDTH_XL } from "../../../global/constants"
 import { FaBars, FaTimes } from "react-icons/fa"
 import logo from '../../../assets/svg/logos/header-logo.svg'
+import useChainData from '../../../hooks/useChainData' 
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false)
 	const [isScrolled, setIsScrolled] = useState(false)
-	const client = new ChainRegistryClient({
-		chainNames: ['stargaze'],
-	})
-
-	const [chains, setChains] = useState<any[]>([])
-	const [assets, setAssets] = useState<any[]>([])
 	const mobileMenuRef = useRef<HTMLDivElement>(null)
+
+	const { chains } = useChainData(['stargaze'])
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -37,15 +33,6 @@ const Header = () => {
 	}, [])
 
 	useEffect(() => {
-		(async () => {
-			await client.fetchUrls()
-			const chainData = client.getChain('stargaze')
-			const assetListData = client.getChainAssetList('stargaze')
-
-			setChains([chainData])
-			setAssets([assetListData])
-		})()
-
 		const handleResize = () => {
 			if (window.innerWidth > WINDOW_INNER_WIDTH_XL) {
 				setMenuOpen(false)
