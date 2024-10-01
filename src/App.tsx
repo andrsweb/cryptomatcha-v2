@@ -32,96 +32,80 @@ import { ChainProvider } from "@cosmos-kit/react"
 import { ThemeProvider } from "@interchain-ui/react"
 
 
+const BlockchainProvider = ({ children }: { children: React.ReactNode }) => {
+    const client = new ChainRegistryClient({
+        chainNames: ['stargaze'],
+    })
+
+    const [chains, setChains] = useState<any[]>([])
+    const [assets, setAssets] = useState<any[]>([])
+    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        (async () => {
+            try {
+                await client.fetchUrls()
+                const chainData = client.getChain('stargaze')
+                const assetListData = client.getChainAssetList('stargaze')
+
+                if (chainData && assetListData) {
+                    setChains([chainData])
+                    setAssets([assetListData])
+                } else {
+                    setError("Chain data or asset list data is not available.")
+                    console.error("Chain data or asset list data is not available.")
+                }
+            } catch (error) {
+                console.error("Error fetching chains or assets:", error)
+                setError("Error loading chain data.")
+            }
+        })()
+    }, [client])
+
+    if (error) {
+        return <StargazeError message={error} />
+    }
+
+    if (chains.length === 0 || assets.length === 0) {
+        return null
+    }
+
+    return (
+        <ChainProvider
+            chains={chains}
+            assetLists={assets}
+            wallets={[...keplr, ...leap]}
+            walletConnectOptions={walletConnectOptions}
+            sessionOptions={sessionOptions}
+        >
+            {children}
+        </ChainProvider>
+    )
+}
+
 const App = () => {
-	const client = new ChainRegistryClient({
-		chainNames: ['stargaze'],
-	})
+    return (
+        <ThemeProvider>
+            <Router>
+                <ToastContainer autoClose={1000} />
+                <Routes>
+                    <Route path="/admin/login" element={<Login />} />
+                    <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+                    <Route path="*" element={<Error404 />} />
 
-	const [chains, setChains] = useState<any[]>([])
-	const [assets, setAssets] = useState<any[]>([])
-	const [error, setError] = useState<string | null>(null)
-
-	useEffect(() => {
-		(async () => {
-			try {
-				await client.fetchUrls()
-				const chainData = client.getChain('stargaze')
-				const assetListData = client.getChainAssetList('stargaze')
-
-				if (chainData && assetListData) {
-					setChains([chainData])
-					setAssets([assetListData])
-				} else {
-					setError("Chain data or asset list data is not available.")
-					console.error("Chain data or asset list data is not available.")
-				}
-			} catch (error) {
-				console.error("Error fetching chains or assets:", error)
-				setError("Error loading chain data.")
-			}
-		})()
-	}, [client])
-
-	if (error) {
-		return <StargazeError message={error} />
-	}
-
-	if (chains.length === 0 || assets.length === 0) {
-		return null
-	}
-
-	return (
-		<ChainProvider
-			chains={chains}
-			assetLists={assets}
-			wallets={[...keplr, ...leap]}
-			walletConnectOptions={walletConnectOptions}
-			sessionOptions={sessionOptions}
-		>
-			<ThemeProvider
-				themeDefs={[
-					{
-						name: 'custom',
-						vars: {
-							colors: {
-								primary500: '#1a73e8',
-							},
-							space: {
-								sm: '8px',
-								lg: '24px',
-							},
-						},
-					},
-				]}
-				customTheme="custom"
-			>
-				<Router>
-					<ToastContainer autoClose={1000} />
-					<Routes>
-						<Route path="/" element={<MainLayout />}>
-							<Route index element={<Home />} />
-							<Route path='/news' element={<NewsPage />} />
-							<Route path='/news/:category/:slug' element={<NewsSingle />} />
-							<Route path="/apps" element={<Apps />} />
-							<Route element={<PrivateRoute />}>
-								<Route path="/user-dashboard" element={<UserDashboard />} />
-							</Route>
-						</Route>
-						<Route path="/admin/login" element={<Login />} />
-						<Route
-							path="/admin/dashboard"
-							element={
-								<AdminRoute>
-									<AdminDashboard />
-								</AdminRoute>
-							}
-						/>
-						<Route path="*" element={<Error404 />} />
-					</Routes>
-				</Router>
-			</ThemeProvider>
-		</ChainProvider>
-	)
+                    <Route path="/" element={<BlockchainProvider><MainLayout /></BlockchainProvider>}>
+                        <Route index element={<Home />} />
+                        <Route path="/news" element={<NewsPage />} />
+                        <Route path="/news/:category/:slug" element={<NewsSingle />} />
+                        <Route path="/apps" element={<Apps />} />
+                        <Route element={<PrivateRoute />}>
+                            <Route path="/user-dashboard" element={<UserDashboard />} />
+                        </Route>
+                    </Route>
+                </Routes>
+            </Router>
+        </ThemeProvider>
+    )
 }
 
 export default App
